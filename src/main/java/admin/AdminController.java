@@ -24,5 +24,7 @@ public class AdminController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/WEB-INF/main/main.jsp";
 		}
+		
+		request.getRequestDispatcher(viewPage).forward(request, response);
 	}
 }
