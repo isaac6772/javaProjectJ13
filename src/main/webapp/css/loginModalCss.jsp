@@ -58,7 +58,7 @@
     	height : 40px;
     	background-color: #547abb;
     	margin-top: 20px;
-    	margin-bottom: 37px;
+    	margin-bottom: 30px;
     	color : white;
     	font-size: 1em;
     }
@@ -74,5 +74,9 @@
     #loginModal .close i:hover {
     	color : #aaa;
     	cursor : pointer;
+    }
+    #loginModal a {
+    	text-decoration: none;
+    	color : black;
     }
 </style>

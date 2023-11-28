@@ -14,7 +14,7 @@
         border : 1px solid rgb(190, 186, 186);
         border-radius : 12px;
         width : 500px;
-        height : 720px;
+        height : 700px;
         text-align: left;
         font-size: 1.1em;
         font-weight: bold;
@@ -64,7 +64,7 @@
     }
     #joinModal .midIcon, #joinModal .pwdIcon {
         position : absolute;
-        top : 46px;
+        top : 48px;
         left : 10px;
     }
     #joinModal .box select {
@@ -74,7 +74,7 @@
         border : 1px solid rgb(190, 186, 186);
     }
     #joinModal .btnBox {
-        margin-top: 25px;
+        margin-top: 30px;
         text-align: center;
     }
     #joinModal .btnBox button {
@@ -94,7 +94,7 @@
         display: none;
         position : absolute;
         right : 7px;
-        top : 38px;
+        top : 40px;
     }
     #joinModal .invalidMsg {
         position: absolute;

@@ -11,7 +11,7 @@
 	});
 </script>
 <nav>
-    <div style = "margin-top: 30px;" class = "navhome"><a href = "main.ad"><i class="fa-solid fa-house fa-xl" style="color: #547abb;"></i>홈</a></div>
+    <div style = "margin-top: 30px;" class = "navhome"><a href = "main.mem"><i class="fa-solid fa-house fa-xl" style="color: #547abb;"></i>홈</a></div>
     <div class = "mainmenu">
         <i class="fa-regular fa-clipboard fa-xl" style="color: #547abb; margin-left: 19px;"></i><span style ="margin-left:-3px">자유게시판</span><i class="fa-solid fa-chevron-down fa-sm"></i>
     </div>

@@ -1,1 +1,1 @@
-<% pageContext.forward("main.ad"); %>
+<% pageContext.forward("main.mem"); %>

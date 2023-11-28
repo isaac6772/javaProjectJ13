@@ -18,12 +18,13 @@ public class AdminController extends HttpServlet{
 		
 		String com = request.getRequestURI();
 		com = com.substring(com.lastIndexOf("/"),com.lastIndexOf("."));
-		
+		/*
 		if(com.equals("/main")) {
 			command = new MainCommand();
 			command.execute(request, response);
 			viewPage = "/WEB-INF/main/main.jsp";
 		}
+		*/
 		
 		request.getRequestDispatcher(viewPage).forward(request, response);
 	}

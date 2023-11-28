@@ -1,20 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
+	body {
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Gowun Batang';
+	}
 	header {
 	    padding: 20px;
 	    position: relative;
 	    height: 5vh;
 	    border-bottom: 1px solid rgb(224, 219, 219);
 	}
-	header .home,header .login {
+	header .home, header .search, header .login{
 	    display : inline-block;
-	    cursor: pointer;
 	}
 	header .search {
-	    margin-left: 25vw;
+	    margin-left: 5vw;
 	    border: 1px solid rgb(190, 186, 186);
 	    border-radius: 20px;
-	    width: 950px;
+	    width: 65%;
 	    height: 40px;
 	    padding-left: 10px;
 	    background-color: rgb(243, 243, 243);
@@ -24,28 +28,55 @@
 	    outline: none;
 	    font-size: 1.2em;
 	    margin-left: 10px;
-	    width: 900px;
+	    width: 85%;
 	    background-color: rgb(243, 243, 243);
 	}
 	header .search i {
 	    line-height: 40px;
 	}
 	header .home {
-	    position: absolute;
-	    left: 23px;
-	    top: 25 px;
 	    font-size: 1.5em;
 	    font-weight: bolder;
+	    cursor: pointer;
 	}
 	header .login {
-	    position: absolute;
-	    right: 30px;
-	    top: 25px;
+		position : relative;
+		margin-left : 238px;
+		width : 145px;
 	    font-size: 1.2em;
 	    font-weight: bolder;
+	    height : 42px;
+	}
+	header .login img {
+		position : absolute;
+		right : 24px;
+		border: 1px solid rgb(190, 186, 186);
+		border-radius: 30px;
+		width : 30px;
+		height : 30px;
+	}
+	header .info {
+		display : none;
+		position : absolute;
+		top : 40px;
+		left : 0px;
+		width : 125px;
+		border:1px solid rgb(155, 155, 155);
+		border-radius: 6px;
+	}
+	header .info div {
+		display: inline-block;
+		width : 100%;
+		background-color: white;
+		font-size: 0.8em;
+		text-align: center;
+	}
+	header .login a:hover {
+		color : darkgray;
 	}
 	header a {
 		text-decoration: none;
 		color : black;
 	}
+	
 </style>
