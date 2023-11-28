@@ -15,15 +15,6 @@
 	let regName = /^[가-힣]{1,20}$/;
 	let regPhone = /^[0-9]{9,11}$/;
 	
-	function infoShow() {
-		if($('header .info').is(':visible')) {
-			$('header .info').hide();
-		}
-		else {
-			$('header .info').show();
-		}
-	}
-	
 	// 로그인 기본적인 유효성 검사
 	function loginCheck() {
 		if($('#loginMid').val().trim() == "") alert("아이디를 입력해주세요");

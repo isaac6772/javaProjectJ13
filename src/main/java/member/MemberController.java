@@ -52,6 +52,12 @@ public class MemberController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		// 내 정보 보기
+		else if(com.equals("/myInfo")) {
+			command = new MyInfoCommand();
+			command.execute(request, response);
+			viewPage += "/myInfo.jsp";
+		}
 		
 		request.getRequestDispatcher(viewPage).forward(request, response);
 	}

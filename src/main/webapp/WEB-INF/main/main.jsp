@@ -7,9 +7,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>main.jsp</title>
-    <style>
-    	@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> <!-- jquery -->
     <script src="https://kit.fontawesome.com/0989d78570.js" crossorigin="anonymous"></script> <!-- 폰트어썸 -->
     <jsp:include page="/css/loginModalCss.jsp"></jsp:include>	<!-- 로그인모달에 적용할 css -->

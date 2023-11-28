@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
 	body {
         margin: 0px;
         padding: 0px;
@@ -49,11 +50,10 @@
 	}
 	header .login img {
 		position : absolute;
+		border-radius: 32px;
+		width : 32px;
+		height : 32px;
 		right : 24px;
-		border: 1px solid rgb(190, 186, 186);
-		border-radius: 30px;
-		width : 30px;
-		height : 30px;
 	}
 	header .info {
 		display : none;
