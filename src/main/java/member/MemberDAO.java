@@ -120,14 +120,14 @@ public class MemberDAO {
 		return res;
 	}
 	
-	// 회원 닉네임 수정
-	public int setMemberNickChange(String mid, String nickName) {
+	// 회원 정보 수정
+	public int setMemberUpdate(String mid, String parameter, String flag) {
 		int res = 0;
 		
 		try {
-			sql = "update member1 set nickName = ? where mid = ?";
+			sql = "update member1 set "+ flag +" = ? where mid = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, nickName);
+			pstmt.setString(1, parameter);
 			pstmt.setString(2, mid);
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {

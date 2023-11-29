@@ -17,33 +17,33 @@
 			margin : 30px auto;
 			font-weight: bold;
 		}
-		.head {
+		.container .head {
 			font-size: 1.3em;
 			font-weight: bolder;
 			margin-bottom: 10px;
 		}
-		.line {
+		.container .line {
 			border-top:1px solid #e0e0e0;
 			margin-bottom: 20px;
 		}
-		.profile {
+		.container .profile {
 			border: 2px solid #e0e0e0;
 			border-radius: 6px;
 			margin-bottom: 20px;
 		}
-		.profile .title {
+		.container .profile .title {
 			height : 50px;
 			border-bottom: 1px solid #e0e0e0;
 			line-height: 2.8em;
     		padding-left: 20px;
     		font-size: 1.1em;
 		}
-		.profile .imgBox {
+		.container .profile .imgBox {
 			height : 160px;
 			background-color: #f1f1f1;
 			position : relative;
 		}
-		.profile .imgBox .img {
+		.container .profile .imgBox .img {
 			position : absolute;
 			width : 120px;
 			height : 120px;
@@ -52,20 +52,20 @@
 			top : 20px;
 			background: linear-gradient(to bottom right,#9dacd9, #3f59c7);
 		}
-		.profile .imgBox .img img {
+		.container .profile .imgBox .img img {
 			width : 120px;
 			height : 120px;
 			border-radius: 120px;
 		}
-		.profile .imgBox span {
+		.container .profile .imgBox span {
 			position : absolute;
 			top : 40px;
 			left : 180px;
 		}
-		.profile .imgBox span i {
+		.container .profile .imgBox span i {
 			cursor : pointer;
 		}
-		.profile .imgBox .pencil {
+		.container .profile .imgBox .imgPencil {
 			position : absolute;
 			width : 25px;
 			height : 25px;
@@ -75,25 +75,26 @@
 			top : 111px;
 			background : linear-gradient(to bottom right,#9dacd9, #3f59c7);
 		}
-		.profile .imgBox .pencil img {
+		.container .profile .imgBox .imgPencil img {
 			width : 25px;
 			height : 25px;
 			border-radius : 25px;
+			cursor: pointer;
 		}
-		.profile .imgBox #nickChange {
+		.container .profile .imgBox #nickChange {
 			display : none;
 			position : absolute;
 			left : 179px;
 			top : 100px;
 		}
-		.profile .imgBox #invalidMsg {
+		.container .profile .imgBox #invalidMsg {
 			position : absolute;
 			left : 181px;
 			top : 130px;
 			color : red;
 			font-size: 0.8em;
 		}
-		.profile #nickChange input[type=text] {
+		.container .profile #nickChange input[type=text] {
 			border : 1px solid rgb(190, 190, 190);
 			border-radius: 5px;
 			height : 25px;
@@ -103,7 +104,7 @@
 			font-weight : bold;
 			font-family: 'Gowun Batang';
 		}
-		.profile #nickChange input[type=button] {
+		.container .profile #nickChange input[type=button] {
 			border : 1px solid rgb(190, 190, 190);
 			border-radius: 5px;
 			height : 27px;
@@ -113,84 +114,90 @@
 			color : white;
 			cursor : pointer;
 		}
-		.profile #nickChange input[type=button]:hover {
+		.container .profile #nickChange input[type=button]:hover {
 			box-shadow: 0px 0px 4px 1px #aeb7d1;
 		}
-		.info {
+		.container .info {
 			border: 2px solid #e0e0e0;
 			border-radius: 6px;
 			margin-bottom: 20px;
 		}
-		.info .title{
+		.container .info .title{
 			height : 50px;
 			border-bottom: 1px solid #e0e0e0;
 			line-height: 2.8em;
     		padding-left: 20px;
     		font-size: 1.1em;
 		}
-		.info .tr:hover {
+		.container .info .tr:hover {
 			background-color: #f1f1f1;
 		}
-		.info .tr:hover input {
+		.container .info .tr:hover input {
 			background-color: #f1f1f1;
 		}
-		.info .tr:hover .pencil {
+		.container .info .tr:hover .pencil {
 			display : inline-block;
 			cursor : pointer;
 		}
-		.info .th, .info .td {
+		.container .info .th, .info .td {
 			display: inline-block;
 			padding : 10px;
 		}
-		.info .th {
+		.container .info .th {
 			width : 17%;
 			padding-left: 20px;
 		}
-		.info .td {
+		.container .info .td {
 			width : 75%;
 			position : relative;
 		}
-		.info .td #phoneInvalid, .info .td #nameInvalid {
+		.container .info .td #phoneInvalid, .info .td #nameInvalid {
 			position : absolute;
+			top : 12px;
 			left : 207px;
+			font-size : 0.8em;
+			color : red;
 		}
-		.info .td input {
-			border : 0px;
+		.container .info .td input {
+			border : 1px solid #e0e0e0;
+			border-radius : 3px;
+			background-color : #f1f1f1;
 			outline: none;
 			font-family: 'Gowun Batang';
 			font-weight: bold;
 			font-size : 1em;
 			padding : 0px;
+			padding-left: 3px;
 		}
-		.info .pencil {
+		.container .info .pencil {
 			display : none;
 			position : absolute;
 			right : 0px;
 			top : 20px;
 		}
-		.info .check {
+		.container .info .check {
 			display : none;
 			position : absolute;
 			right : 0px;
 			top : 15px;
 			cursor : pointer;
 		}
-		.account {
+		.container .account {
 			border: 2px solid #e0e0e0;
 			border-radius: 6px;
 			margin-bottom: 20px;
 		}
-		.account .title {
+		.container .account .title {
 			height : 50px;
 			border-bottom: 1px solid #e0e0e0;
 			line-height: 2.8em;
     		padding-left: 20px;
     		font-size: 1.1em;
 		}
-		.account .th {
+		.container .account .th {
 			padding: 10px 10px 10px 20px;
 		}
-		.account a {
+		.container .account a {
 			color : rgb(55, 55, 155);
 		}
 	</style>
@@ -203,6 +210,7 @@
 		
 		let nickNameFlag = false;
 		let nameFlag = false;
+		let phoneFlag = false;
 		
 		$(function() {
 			// 수정 버튼 처리
@@ -210,16 +218,61 @@
 				$(this).hide();
 				$(this).next().show();
 				$(this).prev().removeAttr("readonly");
-				$(this).prev().css("background-color","#f1f1f1");
-				$(this).prev().css("border","1px solid #e0e0e0");
+				let temp = $(this).prev().val();
+				$(this).prev().val("");		// 커서를 뒤로 위치시키기 위해 값을 뺏다 넣는다.
 				$(this).prev().focus();
+				$(this).prev().val(temp);
 			});
+			// 체크 버튼(저장)을 눌렀을 때(전화번호인지 이름인지 검사해서 DB처리)
 			$('.check').click(function() {
-				$(this).hide();
-				$(this).prev().show();
-				$(this).prev().prev().attr("readonly","true");
-				$(this).prev().prev().css("background-color","");	// 배경색 제거
-				$(this).prev().prev().css("border","0px");
+				if($(this).parent().hasClass('phone')) {
+					phonefunction();
+					if(phoneFlag == true) {
+						$.ajax({
+							url : "phoneUpdate.mem",
+							type : "post",
+							data : {phone : $(this).prev().prev().val()},
+							success : function(res) {
+								if(res == "1") {
+									alert("수정성공");
+								}
+								else {
+									alert("수정실패");
+								}
+							},
+							error : function() {
+								alert("전송오류");
+							}
+						});
+						$(this).hide();
+						$(this).prev().show();
+						$(this).prev().prev().attr("readonly","true");
+					}
+				}
+				else if($(this).parent().hasClass('name')) {
+					namefunction();
+					if(nameFlag == true) {
+						$.ajax({
+							url : "nameUpdate.mem",
+							type : "post",
+							data : {name : $(this).prev().prev().val()},
+							success : function(res) {
+								if(res == "1") {
+									alert("수정성공");
+								}
+								else {
+									alert("수정실패");
+								}
+							},
+							error : function() {
+								alert("전송오류");
+							}
+						});
+						$(this).hide();
+						$(this).prev().show();
+						$(this).prev().prev().attr("readonly","true");
+					}
+				}
 			});
 			$('#changeNick').click(function() {
 				if($('#nickChange').is(':visible')) $('#nickChange').hide();
@@ -229,12 +282,30 @@
 				nickfunction();
 			});
 			$('#phone').keyup(function() {
-				
+				phonefunction();
 			});
 			$('#name').keyup(function() {
 				namefunction();
 			});
-			
+			$('#imgPencil').click(function() {
+				$('#file').click();
+			});
+			// 파일업로드 창을 닫고난후(file요소에 변화가 생겼을때)
+			$('#file').change(function() {
+				let fName = document.getElementById("file").value;
+				let ext = fName.substring(fName.lastIndexOf(".")+1).toLowerCase();
+				let maxSize = 1024 * 1024 * 5;
+				if(fName.trim() == "") return;
+				if(document.getElementById("file").files[0].size > maxSize) {
+					alert("5MB이하의 자료만 업로드 가능합니다.");
+				}
+				else if(ext != 'jpg' && ext != 'png') {
+					alert("jpg, png 형식만 업로드 가능합니다.");
+				}
+				else {
+					fileUploadForm.submit();
+				}
+			});
 		});
 		
 		// 닉네임 유효성 검사 후 서버 전송(업데이트 처리)
@@ -298,6 +369,7 @@
             }
 		}
 		
+		// 이름 유효성 검사
 		function namefunction() {
 			let regName = /^[가-힣]{1,20}$/;
 			
@@ -308,6 +380,20 @@
          	else {
          		$('#nameInvalid').html("");
 				nameFlag = true;
+        	}
+		}
+		
+		// 전화번호 유효성 검사
+		function phonefunction() {
+			let regPhone = /^[0-9]{9,11}$/;
+			
+			if(!regPhone.test($('#phone').val())) {
+				$('#phoneInvalid').html("전화번호가 형식에 맞지 않습니다.");
+				phoneFlag = false;
+         	}
+         	else {
+         		$('#phoneInvalid').html("");
+         		phoneFlag = true;
         	}
 		}
 		
@@ -324,7 +410,12 @@
 			<div class = "title">프로필</div>
 			<div class = "imgBox">
 				<div class = "img"><img src = "${ctp}/images/profile/${sProfile}" /></div>
-				<div class = "pencil"><img src = "${ctp}/images/util/pencil.jpg" /></div>
+				<div class = "imgPencil">
+					<img src = "${ctp}/images/util/pencil.jpg" id = "imgPencil" />
+					<form name = "fileUploadForm" id = "fileUpload" method = "post" action = "profileUpdate.mem" enctype = "multipart/form-data" style = "display : none;" >
+						<input type = "file" name = "file" id = "file" />
+					</form>
+				</div>
 				<span>
 					등급 : (${strLevel})<br/>닉네임 : ${vo.nickName}
 					<i class="fa-regular fa-pen-to-square" id = "changeNick" style="color: #5875a7;"></i>
@@ -344,18 +435,18 @@
 			<div class = "content">
 				<div class = "tr">
 					<div class = "th">전화번호</div>
-					<div class = "td">
+					<div class = "td phone">
 						<span id = "phoneInvalid"></span>
-						<input type = "text" id = "phone" value = "${vo.phone}" readonly/>
+						<input type = "text" id = "phone" value = "${vo.phone}" readonly maxlength = "11" />
 						<i class="fa-solid fa-pen fa-sm pencil" style="color: #6c737f;"></i>
 						<i class="fa-solid fa-check check" style="color: #6c737f;"></i>
 					</div>
 				</div>
 				<div class = "tr">
 					<div class = "th">이름</div>
-					<div class = "td">
+					<div class = "td name">
 						<span id = "nameInvalid"></span>
-						<input type = "text" id = "name" value = "${vo.name}" readonly/>
+						<input type = "text" id = "name" value = "${vo.name}" readonly maxlength = "20" />
 						<i class="fa-solid fa-pen fa-sm pencil" style="color: #6c737f;"></i>
 						<i class="fa-solid fa-check check" style="color: #6c737f;"></i>
 					</div>

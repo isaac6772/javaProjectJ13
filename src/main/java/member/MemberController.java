@@ -19,6 +19,7 @@ public class MemberController extends HttpServlet{
 		String com = request.getRequestURI();
 		com = com.substring(com.lastIndexOf("/"),com.lastIndexOf("."));
 		
+		// 메인화면 이동
 		if(com.equals("/main")) {
 			command = new MainCommand();
 			command.execute(request, response);
@@ -42,11 +43,13 @@ public class MemberController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		// 로그인 처리
 		else if(com.equals("/loginOk")) {
 			command = new LoginOkCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		// 로그아웃 처리
 		else if(com.equals("/logoutOk")) {
 			command = new LogoutOkCommand();
 			command.execute(request, response);
@@ -63,6 +66,24 @@ public class MemberController extends HttpServlet{
 			command = new NickUpdateCommand();
 			command.execute(request, response);
 			return;
+		}
+		// 전화번호 변경하기
+		else if(com.equals("/phoneUpdate")) {
+			command = new PhoneUpdateCommand();
+			command.execute(request, response);
+			return;
+		}
+		// 이름 변경하기
+		else if(com.equals("/nameUpdate")) {
+			command = new NameUpdateCommand();
+			command.execute(request, response);
+			return;
+		}
+		// 프로필 변경하기(command에서 command로 가도되나..?)
+		else if(com.equals("/profileUpdate")) {
+			command = new ProfileUpdateCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
 		}
 		
 		request.getRequestDispatcher(viewPage).forward(request, response);
