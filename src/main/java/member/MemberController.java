@@ -58,6 +58,12 @@ public class MemberController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/myInfo.jsp";
 		}
+		// 닉네임 변경하기
+		else if(com.equals("/nickUpdate")) {
+			command = new NickUpdateCommand();
+			command.execute(request, response);
+			return;
+		}
 		
 		request.getRequestDispatcher(viewPage).forward(request, response);
 	}

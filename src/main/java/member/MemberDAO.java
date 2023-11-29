@@ -49,7 +49,7 @@ public class MemberDAO {
 				vo.setNickName(rs.getString("nickName"));
 				vo.setName(rs.getString("name"));
 				vo.setPhone(rs.getString("phone"));
-				vo.setGender(rs.getString("phone"));
+				vo.setGender(rs.getString("gender"));
 				vo.setLevel(rs.getInt("level"));
 				vo.setVisitCnt(rs.getInt("visitCnt"));
 				vo.setPoint(rs.getInt("point"));
@@ -111,6 +111,24 @@ public class MemberDAO {
 			pstmt.setString(4, vo.getName());
 			pstmt.setString(5, vo.getPhone());
 			pstmt.setString(6, vo.getGender());
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+	
+	// 회원 닉네임 수정
+	public int setMemberNickChange(String mid, String nickName) {
+		int res = 0;
+		
+		try {
+			sql = "update member1 set nickName = ? where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nickName);
+			pstmt.setString(2, mid);
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("SQL 구문 오류 : " + e.getMessage());

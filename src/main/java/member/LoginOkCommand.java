@@ -35,6 +35,14 @@ public class LoginOkCommand implements MemberInterface {
 			session.setAttribute("sMid", mid);
 			session.setAttribute("sNickName", vo.getNickName());
 			session.setAttribute("sProfile", vo.getProfile());
+			session.setAttribute("sLevel", vo.getLevel());
+			
+			String strLevel = "";
+			if(vo.getLevel() == 0) strLevel = "관리자";
+			else if(vo.getLevel() == 1) strLevel = "준회원";
+			else if(vo.getLevel() == 2) strLevel = "우수회원";
+			
+			session.setAttribute("strLevel", strLevel);
 		}
 		request.setAttribute("url", "main.mem");
 	}
