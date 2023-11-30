@@ -286,4 +286,13 @@
 			}
 		});
 	});
+    
+    function infoShow() {
+		if($('header .info').is(':visible')) {
+			$('header .info').hide();
+		}
+		else {
+			$('header .info').show();
+		}
+	}
 </script>

@@ -3,7 +3,8 @@
 	nav {
 	    border-right: 1px solid rgb(224, 219, 219);
 	    height: 91vh;
-	    width: 260px;
+	    /* width: 260px; */
+	    width : 13vw;
 	    position: fixed;
 	}
 	nav  div {

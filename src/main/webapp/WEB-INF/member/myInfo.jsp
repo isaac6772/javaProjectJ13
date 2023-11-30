@@ -11,393 +11,8 @@
 	<title>myInfo.jsp</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0989d78570.js" crossorigin="anonymous"></script>
-	<style>
-		.container {
-			width : 800px;
-			margin : 30px auto;
-			font-weight: bold;
-		}
-		.container .head {
-			font-size: 1.3em;
-			font-weight: bolder;
-			margin-bottom: 10px;
-		}
-		.container .line {
-			border-top:1px solid #e0e0e0;
-			margin-bottom: 20px;
-		}
-		.container .profile {
-			border: 2px solid #e0e0e0;
-			border-radius: 6px;
-			margin-bottom: 20px;
-		}
-		.container .profile .title {
-			height : 50px;
-			border-bottom: 1px solid #e0e0e0;
-			line-height: 2.8em;
-    		padding-left: 20px;
-    		font-size: 1.1em;
-		}
-		.container .profile .imgBox {
-			height : 160px;
-			background-color: #f1f1f1;
-			position : relative;
-		}
-		.container .profile .imgBox .img {
-			position : absolute;
-			width : 120px;
-			height : 120px;
-			border-radius: 120px;
-			left : 20px;
-			top : 20px;
-			background: linear-gradient(to bottom right,#9dacd9, #3f59c7);
-		}
-		.container .profile .imgBox .img img {
-			width : 120px;
-			height : 120px;
-			border-radius: 120px;
-		}
-		.container .profile .imgBox span {
-			position : absolute;
-			top : 40px;
-			left : 180px;
-		}
-		.container .profile .imgBox span i {
-			cursor : pointer;
-		}
-		.container .profile .imgBox .imgPencil {
-			position : absolute;
-			width : 25px;
-			height : 25px;
-			border : 2px solid white;
-			border-radius : 25px;
-			left : 103px;
-			top : 111px;
-			background : linear-gradient(to bottom right,#9dacd9, #3f59c7);
-		}
-		.container .profile .imgBox .imgPencil img {
-			width : 25px;
-			height : 25px;
-			border-radius : 25px;
-			cursor: pointer;
-		}
-		.container .profile .imgBox #nickChange {
-			display : none;
-			position : absolute;
-			left : 179px;
-			top : 100px;
-		}
-		.container .profile .imgBox #invalidMsg {
-			position : absolute;
-			left : 181px;
-			top : 130px;
-			color : red;
-			font-size: 0.8em;
-		}
-		.container .profile #nickChange input[type=text] {
-			border : 1px solid rgb(190, 190, 190);
-			border-radius: 5px;
-			height : 25px;
-			padding : 0px 5px 0px 5px;
-			padding-left : 4px;
-			outline : none;
-			font-weight : bold;
-			font-family: 'Gowun Batang';
-		}
-		.container .profile #nickChange input[type=button] {
-			border : 1px solid rgb(190, 190, 190);
-			border-radius: 5px;
-			height : 27px;
-			padding : 0px 10px 0px 10px;
-			background : linear-gradient(to bottom, #aeb7d1, #5f6ca7);
-			font-family: 'Gowun Batang';
-			color : white;
-			cursor : pointer;
-		}
-		.container .profile #nickChange input[type=button]:hover {
-			box-shadow: 0px 0px 4px 1px #aeb7d1;
-		}
-		.container .info {
-			border: 2px solid #e0e0e0;
-			border-radius: 6px;
-			margin-bottom: 20px;
-		}
-		.container .info .title{
-			height : 50px;
-			border-bottom: 1px solid #e0e0e0;
-			line-height: 2.8em;
-    		padding-left: 20px;
-    		font-size: 1.1em;
-		}
-		.container .info .tr:hover {
-			background-color: #f1f1f1;
-		}
-		.container .info .tr:hover input {
-			background-color: #f1f1f1;
-		}
-		.container .info .tr:hover .pencil {
-			display : inline-block;
-			cursor : pointer;
-		}
-		.container .info .th, .info .td {
-			display: inline-block;
-			padding : 10px;
-		}
-		.container .info .th {
-			width : 17%;
-			padding-left: 20px;
-		}
-		.container .info .td {
-			width : 75%;
-			position : relative;
-		}
-		.container .info .td #phoneInvalid, .info .td #nameInvalid {
-			position : absolute;
-			top : 12px;
-			left : 207px;
-			font-size : 0.8em;
-			color : red;
-		}
-		.container .info .td input {
-			border : 1px solid #e0e0e0;
-			border-radius : 3px;
-			background-color : #f1f1f1;
-			outline: none;
-			font-family: 'Gowun Batang';
-			font-weight: bold;
-			font-size : 1em;
-			padding : 0px;
-			padding-left: 3px;
-		}
-		.container .info .pencil {
-			display : none;
-			position : absolute;
-			right : 0px;
-			top : 20px;
-		}
-		.container .info .check {
-			display : none;
-			position : absolute;
-			right : 0px;
-			top : 15px;
-			cursor : pointer;
-		}
-		.container .account {
-			border: 2px solid #e0e0e0;
-			border-radius: 6px;
-			margin-bottom: 20px;
-		}
-		.container .account .title {
-			height : 50px;
-			border-bottom: 1px solid #e0e0e0;
-			line-height: 2.8em;
-    		padding-left: 20px;
-    		font-size: 1.1em;
-		}
-		.container .account .th {
-			padding: 10px 10px 10px 20px;
-		}
-		.container .account a {
-			color : rgb(55, 55, 155);
-		}
-	</style>
-	<script>
-		'use strict';
-		
-		let originalPhone = "${vo.phone}";
-		let originalName = "${vo.name}";
-		let originalNickName = "${vo.nickName}";
-		
-		let nickNameFlag = false;
-		let nameFlag = false;
-		let phoneFlag = false;
-		
-		$(function() {
-			// 수정 버튼 처리
-			$('.pencil').click(function() {
-				$(this).hide();
-				$(this).next().show();
-				$(this).prev().removeAttr("readonly");
-				let temp = $(this).prev().val();
-				$(this).prev().val("");		// 커서를 뒤로 위치시키기 위해 값을 뺏다 넣는다.
-				$(this).prev().focus();
-				$(this).prev().val(temp);
-			});
-			// 체크 버튼(저장)을 눌렀을 때(전화번호인지 이름인지 검사해서 DB처리)
-			$('.check').click(function() {
-				if($(this).parent().hasClass('phone')) {
-					phonefunction();
-					if(phoneFlag == true) {
-						$.ajax({
-							url : "phoneUpdate.mem",
-							type : "post",
-							data : {phone : $(this).prev().prev().val()},
-							success : function(res) {
-								if(res == "1") {
-									alert("수정성공");
-								}
-								else {
-									alert("수정실패");
-								}
-							},
-							error : function() {
-								alert("전송오류");
-							}
-						});
-						$(this).hide();
-						$(this).prev().show();
-						$(this).prev().prev().attr("readonly","true");
-					}
-				}
-				else if($(this).parent().hasClass('name')) {
-					namefunction();
-					if(nameFlag == true) {
-						$.ajax({
-							url : "nameUpdate.mem",
-							type : "post",
-							data : {name : $(this).prev().prev().val()},
-							success : function(res) {
-								if(res == "1") {
-									alert("수정성공");
-								}
-								else {
-									alert("수정실패");
-								}
-							},
-							error : function() {
-								alert("전송오류");
-							}
-						});
-						$(this).hide();
-						$(this).prev().show();
-						$(this).prev().prev().attr("readonly","true");
-					}
-				}
-			});
-			$('#changeNick').click(function() {
-				if($('#nickChange').is(':visible')) $('#nickChange').hide();
-				else $('#nickChange').show();
-			});
-			$('#nickName').keyup(function() {
-				nickfunction();
-			});
-			$('#phone').keyup(function() {
-				phonefunction();
-			});
-			$('#name').keyup(function() {
-				namefunction();
-			});
-			$('#imgPencil').click(function() {
-				$('#file').click();
-			});
-			// 파일업로드 창을 닫고난후(file요소에 변화가 생겼을때)
-			$('#file').change(function() {
-				let fName = document.getElementById("file").value;
-				let ext = fName.substring(fName.lastIndexOf(".")+1).toLowerCase();
-				let maxSize = 1024 * 1024 * 5;
-				if(fName.trim() == "") return;
-				if(document.getElementById("file").files[0].size > maxSize) {
-					alert("5MB이하의 자료만 업로드 가능합니다.");
-				}
-				else if(ext != 'jpg' && ext != 'png') {
-					alert("jpg, png 형식만 업로드 가능합니다.");
-				}
-				else {
-					fileUploadForm.submit();
-				}
-			});
-		});
-		
-		// 닉네임 유효성 검사 후 서버 전송(업데이트 처리)
-		function nickNameChange() {
-			nickfunction();
-			
-			if(nickNameFlag == true) {
-				$.ajax({
-					url : "nickUpdate.mem",
-					type : "post",
-					data : {nickName : $('#nickName').val()},
-					success : function(res) {
-						if(res != "0") {
-							alert("닉네임이 수정되었습니다.");
-							location.reload();
-						}
-						else alert("수정 실패");
-					},
-					error : function() {
-						alert("전송오류");
-					}
-				});
-			}
-		}
-		
-		// 닉네임체크 유효성 검사
-		function nickfunction() {
-			let regNickName = /^[a-zA-Z0-9가-힣]{2,15}$/;
-			
-			if(!regNickName.test($('#nickName').val())) {
-				$('#invalidMsg').css("color","red");
-  				$('#invalidMsg').html("닉네임이 형식에 맞지 않습니다.");
-				nickNameFlag = false;
-  			}
-			else if($('#nickName').val() == originalNickName) {
-				$('#invalidMsg').css("color","red");
-				$('#invalidMsg').html("기존 닉네임과 동일합니다");
-				nickNameFlag = false;
-			}
-  			else {
-            	$.ajax({
-            		url : "nickCheck.mem",
-            		type : "post",
-            		data : {nickName : $('#nickName').val()},
-            		success : function(res) {
-            			if(res != "1") {
-            				$('#invalidMsg').css("color","red");
-            				$('#invalidMsg').html("이미 존재하는 닉네임입니다.");
-            				nickNameFlag = false;
-            			}
-            			else {
-            				$('#invalidMsg').css("color","green");
-            				$('#invalidMsg').html("사용가능한 닉네임 입니다.");
-            		        nickNameFlag = true;
-            			}
-            		},
-            		error : function() {
-            			alert("전송오류");
-            		}
-            	});
-            }
-		}
-		
-		// 이름 유효성 검사
-		function namefunction() {
-			let regName = /^[가-힣]{1,20}$/;
-			
-			if(!regName.test($('#name').val())) {
-				$('#nameInvalid').html("이름이 형식에 맞지 않습니다.");
-				nameFlag = false;
-         	}
-         	else {
-         		$('#nameInvalid').html("");
-				nameFlag = true;
-        	}
-		}
-		
-		// 전화번호 유효성 검사
-		function phonefunction() {
-			let regPhone = /^[0-9]{9,11}$/;
-			
-			if(!regPhone.test($('#phone').val())) {
-				$('#phoneInvalid').html("전화번호가 형식에 맞지 않습니다.");
-				phoneFlag = false;
-         	}
-         	else {
-         		$('#phoneInvalid').html("");
-         		phoneFlag = true;
-        	}
-		}
-		
-	</script>
+	<jsp:include page="/css/myInfoCss.jsp"></jsp:include>
+	<jsp:include page="/js/myInfoJs.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
@@ -481,11 +96,71 @@
 		<div class = "account">
 			<div class = "title">계정관리</div>
 			<div class = "manage">
-				<div class = "th"><a href = "">비밀번호 변경</a></div>
-				<div class = "th"><a href = "">회원탈퇴</a></div>
+				<div class = "tr">
+					<div class = "th"><a href = "javascript:pwdChangeToggle()">비밀번호 변경</a></div>
+					<div class = "td pwdChangeBox" id = "pwdCheckBox" style = "display :none">
+						<span style = "font-size : 0.94em;">기존 비밀번호를 입력해주세요</span>
+						<input type = "password" id = "pwd" placeholder = "비밀번호" />
+						<input type = "button" onclick = "pwdCheck()" value = "입력" />
+					</div>
+					<div class = "td pwdChangeBox" id = "pwdChangeBox" style = "display : none; width : 495px;">
+						<span style = "font-size : 0.94em;">새 비밀번호를 입력해주세요</span>
+						<input type = "password" id = "newPwd" placeholder = "새비밀번호" />
+					</div>
+				</div>
+				<div class = "tr">
+					<div class = "th"><a href = "javascript:DeleteModalShow()">회원탈퇴</a></div>
+					<div class = "td pwdChangeBox" id = "pwdReCheck" style = "display : none">
+						<span style = "font-size : 0.94em;">한번 더 입력해주세요</span>
+						<input type = "password" id = "oneMorePwd" placeholder = "비밀번호" />
+						<input type = "button" onclick = "pwdChange()" value = "변경" />
+					</div>	
+				</div>
+				<div class = "tr">
+					<div class = "th"></div>
+					<div class = "td">
+						<span class = "pwdChangeBox" style = "font-size : 0.94em; color : red; display : none;" id = "regInvalid">비밀번호는 4~15자 사이의 특수문자,영문자,숫자를 1개 이상 조합하여 만들어주세요</span>
+						<span class = "pwdChangeBox" style = "font-size : 0.94em; color : red; display : none;" id = "notCorrect">비밀번호가 일치하지 않습니다</span>
+					</div>	
+				</div>
 			</div>
 		</div>
 	</div>
 	 
+	 <div id = "memberDeleteModal">
+	 	<div class = "content">
+	 		<div class = "title">
+	 			<span>회원탈퇴</span>
+	 			<div><i class="fa-solid fa-xmark close" id = "closeMemberDelete" style="color: #94989e;"></i></div>
+	 		</div>
+	 		<div class = "info">
+	 			<span style = "color : red;">
+	 				회원탈퇴시 회원정보가 모두 삭제됩니다.<br/>
+	 				(단, 아래 항목은 표기된 법률에 따라 특정 기간 동안 보관됩니다.)<br/>
+	 			</span>
+	 			<span style = "font-size: 0.8em">
+	 				1. 계약 또는 청약철회 등에 관한 기록 보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률 / 보존 기간:5년<br/>
+	 				2. 대금결제 및 재화 등의 공급에 관한 기록 보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률 / 보존 기간:5년<br/>
+	 				3. 전자금융 거래에 관한 기록 보존 이유 : 전자금융거래법 보존 기간 / 5년<br/>
+	 				4. 소비자의 불만 또는 분쟁처리에 관한 기록 보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률 보존 기간 / 3년<br/>
+	 				5. 신용정보의 수집/처리 및 이용 등에 관한 기록 보존 이유 : 신용정보의 이용 및 보호에 관한 법률 보존기간 / 3년
+	 			</span>
+ 			</div>
+ 			<div style = "font-weight: bolder">탈퇴사유</div>
+	 		<div>
+	 			<select class = "selectBox">
+	 				<option>아이디변경 / 재가입 목적</option>
+	 				<option>서비스 불만족</option>
+	 				<option>더이상 이용하지 않음</option>
+	 			</select>
+ 			</div>
+ 			<div class = "check">
+ 				<input type = "checkbox" id = "leaveCheck" /> 해당 내용을 모두 확인했으며, 회원탈퇴에 동의합니다.
+ 			</div>
+ 			<div class = "delete">
+ 				<input type = "button" onclick = "memberLeave()" value = "회원탈퇴" />
+ 			</div>
+	 	</div>
+	 </div>
 </body>
 </html>

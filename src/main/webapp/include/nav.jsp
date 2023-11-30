@@ -17,7 +17,7 @@
     </div>
     <div class = "submenu">
         <div><a href = "">인기글</a></div>
-        <div><a href = "">전체글</a></div>
+        <div><a href = "board.bo">전체글</a></div>
         <div><a href = "">공지사항</a></div>
     </div>
     <div class = "mainmenu">

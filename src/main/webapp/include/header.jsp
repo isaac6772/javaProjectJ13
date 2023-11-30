@@ -2,6 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var = "ctp" value = "${pageContext.request.contextPath}" />
 <jsp:include page="/css/headerCss.jsp"></jsp:include>
+<script src="https://kit.fontawesome.com/0989d78570.js" crossorigin="anonymous"></script> <!-- 폰트어썸 -->
+<jsp:include page="/css/loginModalCss.jsp"></jsp:include>	<!-- 로그인모달에 적용할 css -->
+<jsp:include page="/css/joinModalCss.jsp"></jsp:include>	<!-- 회원가입모달에 적용할 css -->
+<jsp:include page="/js/loginJoinModalJs.jsp"></jsp:include>	<!-- 회원가입모달에 적용할 js -->
 <script>
 	'use strict';
 	
@@ -28,9 +32,11 @@
     		<span style = "display : inline-block; width : 160px; text-align: right"><span>${sNickName}</span><span style = "font-size : 0.85em"> 님</span></span>
     		<a href = "javascript:infoShow()" class = "profile"><img src = "${ctp}/images/profile/${sProfile}" /></a>
 			<div class = "info">
-				<div style = "border-bottom:1px solid rgb(190, 186, 186);border-radius: 6px 6px 0px 0px;"><a href = "myInfo.mem">내정보</a></div>
-				<div style = "border-bottom:1px solid rgb(190, 186, 186);"><a href = "">설정</a></div>
-				<div style = "border-radius: 0px 0px 6px 6px;"><a href = "javascript:location.href='logoutOk.mem'">로그아웃</a></div>
+				<div><a href = "myInfo.mem">내정보</a></div>
+				<div style = "border : 1px solid #e0e0e0"></div>
+				<div><a href = "">설정</a></div>
+				<div style = "border : 1px solid #e0e0e0"></div>
+				<div><a href = "javascript:location.href='logoutOk.mem'">로그아웃</a></div>
 			</div>
     	</div>
     </c:if>

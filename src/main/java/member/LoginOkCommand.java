@@ -25,6 +25,10 @@ public class LoginOkCommand implements MemberInterface {
 		if(vo.getMid() == null) {
 			request.setAttribute("msg", "아이디 또는 비밀번호를 잘못 입력했습니다.");
 		}
+		// 탈퇴 신청한 회원은 로그인이 되지 않는다.
+		else if(vo.getLevel() == -1) {
+			request.setAttribute("msg", "아이디 또는 비밀번호를 잘못 입력했습니다.");
+		}
 		else if (!vo.getPwd().equals(pwd)) {
 			request.setAttribute("msg", "아이디 또는 비밀번호를 잘못 입력했습니다.");
 		}
@@ -38,9 +42,9 @@ public class LoginOkCommand implements MemberInterface {
 			session.setAttribute("sLevel", vo.getLevel());
 			
 			String strLevel = "";
-			if(vo.getLevel() == 0) strLevel = "관리자";
+			if(vo.getLevel() == 77) strLevel = "관리자";
 			else if(vo.getLevel() == 1) strLevel = "준회원";
-			else if(vo.getLevel() == 2) strLevel = "우수회원";
+			else if(vo.getLevel() == 2) strLevel = "정회원";
 			
 			session.setAttribute("strLevel", strLevel);
 		}

@@ -138,4 +138,22 @@ public class MemberDAO {
 		return res;
 	}
 	
+	// 회원 탈퇴 신청
+	public int setMemberLeave(String mid) {
+		int res = 0;
+		
+		try {
+			sql = "update member1 set level = -1 where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		
+		return res;
+	}
+	
 }

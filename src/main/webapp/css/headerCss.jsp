@@ -82,12 +82,17 @@
 		background-color: white;
 	}
 	header .info div {
-		display: inline-block;
-		width : 100%;
+		display: block;
+		border-radius : 7px;
+		width : 90%;
 		font-size: 0.8em;
 		text-align: center;
+		margin : 3px auto;
 	}
-	header .login1 a:hover, header .login2 a:hover {
+	header .info div:hover {
+		background-color: #b6bbce;
+	}
+	header .login1 a:hover {
 		color : darkgray;
 	}
 	header a {
