@@ -48,7 +48,7 @@
 	    font-weight: bolder;
 	}
 	header .login2 {
-		position : fixed;
+		position : absolute;
 		top : 28px;
 		margin-left : 150px;
 		width : 200px;
@@ -57,14 +57,14 @@
 	    height : 60px;
 	}
 	header .login2 .profile {
-		position : fixed;
+		position : absolute;
 		display : inline-block;
 		background: linear-gradient(to bottom right,#9dacd9, #3f59c7);
 		border-radius: 32px;
 		width : 32px;
 		height : 32px;
-		top : 26px;
-		right : 56px;
+		top : 0px;
+		right : -8px;
 	}
 	header .login2 img {
 		border-radius: 32px;

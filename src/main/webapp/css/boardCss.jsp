@@ -6,7 +6,7 @@
 	}
 	.container .boardContainer {
 		margin : 45px auto;
-		width : 72%;
+		width : 82%;
 	}
 	.container .writeBtn {
 		margin-top : 15px;

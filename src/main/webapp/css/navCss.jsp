@@ -5,7 +5,7 @@
 	    height: 91vh;
 	    /* width: 260px; */
 	    width : 13vw;
-	    position: fixed;
+	    position: absolute;
 	}
 	nav  div {
 	    border-radius: 10px;

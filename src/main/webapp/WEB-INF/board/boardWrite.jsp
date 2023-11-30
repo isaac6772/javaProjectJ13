@@ -17,11 +17,27 @@
 	
 	<div class = "container">
 		<div class = "boardContainer">
-			<div class = "title">글쓰기</div>
+			<div class = "part">
+				<span>글쓰기</span>
+				<i class="fa-solid fa-pencil fa-xl"></i>
+			</div>
 			<div class = "table">
 				<div class = "tr">
 					<div class = "td">
-						<textarea class = "textarea"></textarea>
+						<input type = "text" class = "title" placeholder = "제목을 입력해주세요" />
+					</div>
+				</div>
+				<div class = "tr">
+					<div class = "td">
+						<textarea class = "textarea" placeholder = "내용을 입력해주세요"></textarea>
+					</div>
+				</div>
+				<div class = "tr">
+					<div class = "td" style = "width : 49%;">
+						<input type = "file" id = "mfile" multiple class = "fileUpload"/>
+					</div>
+					<div class = "td" style = "width : 50%; text-align: right; float : right;">
+						<input type = "button" class = "boardWrite" value = "등 록" />
 					</div>
 				</div>
 			</div>

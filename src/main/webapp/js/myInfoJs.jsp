@@ -6,11 +6,11 @@
 	let originalName = "${vo.name}";
 	let originalNickName = "${vo.nickName}";
 	
-	let nickNameFlag = false;
-	let nameFlag = false;
-	let phoneFlag = false;
-	let pwdFlag = false;
-	let pwdConfirmFlag = false;
+	let nicknameFlag22 = false;
+	let nameFlag2 = false;
+	let phoneFlag2 = false;
+	let pwdFlag2 = false;
+	let pwdConfirmFlag2 = false;
 	
 	$(function() {
 		// 수정 버튼 처리
@@ -27,7 +27,7 @@
 		$('.check').click(function() {
 			if($(this).parent().hasClass('phone')) {
 				phonefunction();
-				if(phoneFlag == true) {
+				if(phoneFlag2 == true) {
 					$.ajax({
 						url : "phoneUpdate.mem",
 						type : "post",
@@ -51,7 +51,7 @@
 			}
 			else if($(this).parent().hasClass('name')) {
 				namefunction();
-				if(nameFlag == true) {
+				if(nameFlag2 == true) {
 					$.ajax({
 						url : "nameUpdate.mem",
 						type : "post",
@@ -124,7 +124,7 @@
 	function nickNameChange() {
 		nickfunction();
 		
-		if(nickNameFlag == true) {
+		if(nicknameFlag22 == true) {
 			$.ajax({
 				url : "nickUpdate.mem",
 				type : "post",
@@ -150,12 +150,12 @@
 		if(!regNickName.test($('#nickName').val())) {
 			$('#invalidMsg').css("color","red");
 				$('#invalidMsg').html("닉네임이 형식에 맞지 않습니다.");
-			nickNameFlag = false;
+			nicknameFlag22 = false;
 			}
 		else if($('#nickName').val() == originalNickName) {
 			$('#invalidMsg').css("color","red");
 			$('#invalidMsg').html("기존 닉네임과 동일합니다");
-			nickNameFlag = false;
+			nicknameFlag22 = false;
 		}
 			else {
 	    	$.ajax({
@@ -166,12 +166,12 @@
 	    			if(res != "1") {
 	    				$('#invalidMsg').css("color","red");
 	    				$('#invalidMsg').html("이미 존재하는 닉네임입니다.");
-	    				nickNameFlag = false;
+	    				nicknameFlag22 = false;
 	    			}
 	    			else {
 	    				$('#invalidMsg').css("color","green");
 	    				$('#invalidMsg').html("사용가능한 닉네임 입니다.");
-	    		        nickNameFlag = true;
+	    		        nicknameFlag22 = true;
 	    			}
 	    		},
 	    		error : function() {
@@ -187,11 +187,11 @@
 		
 		if(!regName.test($('#name').val())) {
 			$('#nameInvalid').html("이름이 형식에 맞지 않습니다.");
-			nameFlag = false;
+			nameFlag2 = false;
 	 	}
 	 	else {
 	 		$('#nameInvalid').html("");
-			nameFlag = true;
+			nameFlag2 = true;
 		}
 	}
 	
@@ -201,11 +201,11 @@
 		
 		if(!regPhone.test($('#phone').val())) {
 			$('#phoneInvalid').html("전화번호가 형식에 맞지 않습니다.");
-			phoneFlag = false;
+			phoneFlag2 = false;
 	 	}
 	 	else {
 	 		$('#phoneInvalid').html("");
-	 		phoneFlag = true;
+	 		phoneFlag2 = true;
 		}
 	}
 	
@@ -216,11 +216,11 @@
 		if(!regPwd.test($('#newPwd').val())) {
 			$('#notCorrect').hide();
 			$('#regInvalid').show();
-			pwdFlag = false;
+			pwdFlag2 = false;
 		}
 		else {
 			$('#regInvalid').hide();
-			pwdFlag = true;
+			pwdFlag2 = true;
 		}
 	}
 	
@@ -230,11 +230,11 @@
 			if($('#newPwd').val() != $('#oneMorePwd').val()) {
 				$('#regInvalid').hide();
 				$('#notCorrect').show();
-				pwdConfirmFlag = false;
+				pwdConfirmFlag2 = false;
 			}
 			else {
 				$('#notCorrect').hide();
-				pwdConfirmFlag = true;
+				pwdConfirmFlag2 = true;
 			}
 		});
 	}
@@ -279,7 +279,7 @@
 		regPwdCheck();
 		regPwdConfirmCheck();
 		
-		if(pwdFlag == false || pwdConfirmFlag == false) return false;
+		if(pwdFlag2 == false || pwdConfirmFlag2 == false) return false;
 		
 		$.ajax({
 			url : "pwdChange.mem",
