@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 	.container {
-		width : 800px;
-		margin : 15px auto;
 		font-weight: bold;
+		width : 800px;
+		position : absolute;
+		top : 133px;
+		left : 500px;
+		z-index: 1;
 	}
 	.container .head {
 		font-size: 1.3em;
@@ -225,6 +228,7 @@
 		background-color: rgba(0, 0, 0, 0.5);
 		width : 100%;
 		height : 100%;
+		z-index: 99;
 	}
 	#memberDeleteModal .content {
 		background-color: white;

@@ -2,10 +2,11 @@
 <style>
 	nav {
 	    border-right: 1px solid rgb(224, 219, 219);
-	    height: 91vh;
-	    /* width: 260px; */
+	    height: 90vh;
 	    width : 13vw;
-	    position: absolute;
+	    position: fixed;
+	    left : 0px;
+	    top : 88px;
 	}
 	nav  div {
 	    border-radius: 10px;

@@ -19,8 +19,13 @@ create table board1(
 
 drop table board1;
 desc board1;
-insert into board1 values(default,'홍길동',1,'안녕','더미데s이터',null,null,default,default,default,'일반',default);
+insert into board1 values(default,'김말숙',3,'말숙이왔따','간다~',null,null,default,default,default,'일반',default);
+insert into board1 values(default,'홍길동',2,'안녕','하세요~',null,null,default,default,default,'일반',default);
+insert into board1 values(default,'관리자',1,'안녕','하세요~',null,null,default,default,default,'일반',default);
 select * from board1;
 
 select board1.*,member1.level from board1 join member1 on board1.memberIdx = member1.idx;
 select board1.*,member1.level,datediff(now(),writeDate) as dateDiff, timestampdiff(hour,writeDate,now()) as hourDiff from board1 join member1 on board1.memberIdx = member1.idx order by board1.idx desc
+
+select board1.*,member1.level,count(boardReply.idx), datediff(now(),board1.writeDate) as dateDiff, timestampdiff(hour,board1.writeDate,now()) as hourDiff from board1 join member1 on board1.memberIdx = member1.idx left join boardReply on board1.idx = boardReply.boardIdx group by board1.idx order by board1.idx desc
+select board1.*,member1.level from board1 join member1 on board1.memberIdx = member1.idx;

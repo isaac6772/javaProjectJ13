@@ -3,6 +3,10 @@
 	.container {
 		margin-left : 13vw;
 		width : 87vw;
+		position : absolute;
+		top : 104px;
+		left : -23px;
+		z-index: 1;
 	}
 	.container .boardContainer {
 		margin : 35px auto;
@@ -45,7 +49,7 @@
 		overflow: hidden;
 	}
 	.container .tr:hover {
-		background-color: #f1eeee;;
+		background-color: rgb(249, 250, 255);
 	}
 	.container .td {
 		display : inline-block;
@@ -84,7 +88,7 @@
 		border : 0px;
 		color : white;
 		font-weight: bold;
-		background : linear-gradient(to bottom left,rgb(144, 144, 197),rgb(80, 80, 156));
+		background : linear-gradient(to bottom left,rgb(151, 162, 208),rgb(101, 116, 203));
 	}
 	.container .writeBtn:hover {
 		background : linear-gradient(to bottom left,rgb(153, 153, 175),rgb(91, 91, 133));
@@ -106,8 +110,11 @@
 		text-align: center;
 		padding : 1px 5px;
 	}
+	.container .page a {
+		color : rgb(60, 101, 212);
+	}
 	.container .page:hover {
-		background : rgb(165, 165, 224);
+		background : rgb(86, 125, 233);
 	}
 	.container .page:hover a {
 		color : white;
@@ -154,7 +161,7 @@
 		border-bottom-right-radius: 5px;
 	}
 	.container .pageBox .selected {
-		background : rgb(165, 165, 224);
+		background : rgb(86, 125, 233);
 	}
 	.container a {
 		color : black;

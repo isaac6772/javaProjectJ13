@@ -14,6 +14,7 @@ public class BoardVO {
 	private String boardType;
 	private String writeDate;
 	
+	private int replyCnt;
 	private int memberLevel;
 	private String dateDiff;
 	private String hourDiff;
@@ -90,6 +91,12 @@ public class BoardVO {
 	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
 	}
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
 	public int getMemberLevel() {
 		return memberLevel;
 	}
@@ -113,6 +120,7 @@ public class BoardVO {
 		return "BoardVO [idx=" + idx + ", nickName=" + nickName + ", memberIdx=" + memberIdx + ", title=" + title
 				+ ", content=" + content + ", fName=" + fName + ", fSName=" + fSName + ", viewNum=" + viewNum
 				+ ", good=" + good + ", bad=" + bad + ", boardType=" + boardType + ", writeDate=" + writeDate
-				+ ", memberLevel=" + memberLevel + ", dateDiff=" + dateDiff + ", hourDiff=" + hourDiff + "]";
+				+ ", replyCnt=" + replyCnt + ", memberLevel=" + memberLevel + ", dateDiff=" + dateDiff + ", hourDiff="
+				+ hourDiff + "]";
 	}
 }

@@ -8,9 +8,12 @@
 	}
 	header {
 	    padding: 20px;
-	    position: relative;
+	    position: fixed;
+	    width : 100vw;
 	    height: 5vh;
 	    border-bottom: 1px solid rgb(224, 219, 219);
+	    background-color : white;
+	    z-index: 50;
 	}
 	header .home, header .search, header .login1, header .login2{
 	    display : inline-block;

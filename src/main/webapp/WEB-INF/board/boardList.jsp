@@ -13,8 +13,9 @@
 	<script>
 		'use strict';
 		
-		function pageSizeChange() {
-						
+		function pageSizeChange(e) {
+			let Size = e.value;
+			location.href = "boardList.bo?page=1&pageSize=" + Size;
 		}
 	</script>
 </head>
@@ -28,10 +29,10 @@
 			<div class = "title">
 				<div class = "t1 td">자유게시판</div>
 				<div class = "t2 td">
-					<select onchange = "pageSizeChange()">
-						<option>10개</option>
-						<option>20개</option>
-						<option>30개</option>
+					<select onchange = "pageSizeChange(this)">
+						<option value = "10" ${pageSize==10 ? "selected" : ""}>10개</option>
+						<option value = "20" ${pageSize==20 ? "selected" : ""}>20개</option>
+						<option value = "30" ${pageSize==30 ? "selected" : ""}>30개</option>
 					</select>
 				</div>
 			</div>
@@ -51,7 +52,10 @@
 						<div class = "td td2">
 							<c:if test="${!empty vo.fName}"><i class="fa-regular fa-image" style="color: #20bc8d;"></i></c:if>
 							<c:if test="${empty vo.fName}"><i class="fa-regular fa-comment-dots" style="color: #6d9cee;"></i></c:if>
-							<a href = "boardContent.bo">${vo.title}</a>
+							<a href = "boardContent.bo?idx=${vo.idx}">
+								${vo.title}
+								<c:if test="${vo.replyCnt != 0}"><span style = "color : red; font-size : 14px;">[${vo.replyCnt}]</span></c:if>
+							</a>
 						</div>
 						<!-- 관리자이면 왕관을 씌운다 -->
 						<div class = "td td3">

@@ -3,6 +3,10 @@
 	.container {
 		margin-left : 13vw;
 		width : 87vw;
+		position : absolute;
+		top : 104px;
+		left : -23px;
+		z-index: 1;
 	}
 	.container .boardContainer {
 		margin : 45px auto;
@@ -77,6 +81,7 @@
 		width : 100%;
 		height : 100%;
 		display : none;
+		z-index: 99;
 	}
 	#alertModal #modalContent {
 		margin : 200px auto;
