@@ -4,7 +4,7 @@ create table member1 (
 	idx 		int not null auto_increment,		/* 회원 고유 번호 */
 	mid			varchar(15) not null,				/* 회원 아이디 */
 	pwd			varchar(100) not null,				/* 회원 비밀번호 */
-	nickName	varchar(15) not null,				/* 회원 닉네임 */
+	nickName	varchar(7) not null,				/* 회원 닉네임 */
 	name		varchar(20) not null,				/* 회원 성명 */
 	phone		varchar(15) not null,				/* 회원 전화번호 */
 	gender		varchar(3) not null,				/* 회원 성별 */

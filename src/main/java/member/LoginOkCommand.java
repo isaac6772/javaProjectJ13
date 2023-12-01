@@ -35,7 +35,7 @@ public class LoginOkCommand implements MemberInterface {
 		// 유효성 검사를 모두 마친 후 로그인 관련 작업 처리
 		else {
 			HttpSession session = request.getSession();
-			session.setAttribute("sMidx", vo.getIdx());
+			session.setAttribute("sIdx", vo.getIdx());
 			session.setAttribute("sMid", mid);
 			session.setAttribute("sNickName", vo.getNickName());
 			session.setAttribute("sProfile", vo.getProfile());

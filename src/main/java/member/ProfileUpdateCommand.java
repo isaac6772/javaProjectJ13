@@ -38,8 +38,10 @@ public class ProfileUpdateCommand implements MemberInterface {
 			// DB에 업로드가 잘 되었다면 session을 변경시키고 이전 프로필 사진을 서버에서 제거시킨다.
 			if(res == 1) {
 				session.setAttribute("sProfile", fileSystemName);
-				File file = new File(realPath + oldProfile);
-				if(file.exists()) file.delete();
+				if(!oldProfile.equals("/noImage.jpg")) {	// noImage는 서버에서 지우지 않는다.
+					File file = new File(realPath + oldProfile);
+					if(file.exists()) file.delete();
+				}
 			}
 		}
 		request.setAttribute("url", "myInfo.mem");

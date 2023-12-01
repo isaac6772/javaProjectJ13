@@ -24,7 +24,7 @@ public class JoinOkCommand implements MemberInterface {
 		// 백엔드 유효성 체크(정규식, 아이디 중복검사)
 		String regMid = "^[a-zA-Z0-9]{4,15}$";
 		String regPwd = "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_\\-+=\\|\\]\\[}{;:/?.>,<\"'])[\\w\"'`~!@#$%^&*()_\\-+=\\|\\]\\[}{;:/?.>,<]{4,15}$";
-		String regNickName = "^^[a-zA-Z0-9가-힣]{2,15}$$";
+		String regNickName = "^^[a-zA-Z0-9가-힣]{2,7}$$";
 		String regName = "^[가-힣]{1,20}$";
 		String regPhone = "^[0-9]{9,11}$";
 		String regGender = "^(남자|여자)$";

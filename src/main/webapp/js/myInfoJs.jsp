@@ -145,7 +145,7 @@
 	
 	// 닉네임체크 유효성 검사
 	function nickfunction() {
-		let regNickName = /^[a-zA-Z0-9가-힣]{2,15}$/;
+		let regNickName = /^[a-zA-Z0-9가-힣]{2,7}$/;
 		
 		if(!regNickName.test($('#nickName').val())) {
 			$('#invalidMsg').css("color","red");

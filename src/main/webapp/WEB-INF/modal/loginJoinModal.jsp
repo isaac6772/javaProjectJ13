@@ -55,7 +55,7 @@
 			<div class = "box">
 				<label for = "nickName">닉네임</label>
 				<div>
-                    <input type = "text" name = "nickName" id = "nickName" placeholder = "2~15자 사이의 한글,영문,숫자 조합" maxlength ="15" autocomplete="off" />
+                    <input type = "text" name = "nickName" id = "nickName" placeholder = "2~7자 사이의 한글,영문,숫자 조합" maxlength ="15" autocomplete="off" />
                     <i class="fa-regular fa-circle-check validIcon nickValidIcon" style="color: #34cd32;"></i>
                     <i class="fa-regular fa-circle-xmark inValidIcon nickInValidIcon" style="color: #df3434;"></i>
                     <span id = "nickInvalid" class = "invalidMsg"></span>

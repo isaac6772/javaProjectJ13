@@ -23,17 +23,18 @@ public class BoardController extends HttpServlet {
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel") == null ? 88 : (int)session.getAttribute("sLevel");
 		
-		if(com.equals("/board")) {
-			viewPage += "/board.jsp";
+		if(com.equals("/boardList")) {
+			command = new BoardListCommand();
+			command.execute(request, response);
+			viewPage += "/boardList.jsp";
 		}
-		/*
-		else if(level < 2) {
-			command = new AccessDenied();
-			return;
-		}
-		*/
 		else if(com.equals("/boardWrite")) {
 			viewPage += "/boardWrite.jsp";
+		}
+		else if(com.equals("/boardWriteOk")) {
+			command = new BoardWriteOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
 		}
 		
 		request.getRequestDispatcher(viewPage).forward(request, response);
