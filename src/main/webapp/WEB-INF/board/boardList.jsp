@@ -50,8 +50,13 @@
 						<div class = "td td1">${curScrStartNo}</div>
 						<!-- 글제목 -->
 						<div class = "td td2">
-							<c:if test="${!empty vo.fName}"><i class="fa-regular fa-image" style="color: #20bc8d;"></i></c:if>
-							<c:if test="${empty vo.fName}"><i class="fa-regular fa-comment-dots" style="color: #6d9cee;"></i></c:if>
+							<c:if test="${vo.good>=10}">
+								<i class="fa-solid fa-medal fa-lg" style="color: #2f369d;"></i>
+							</c:if>
+							<c:if test="${vo.good<10}">
+								<c:if test="${!empty vo.fName}"><i class="fa-regular fa-image" style="color: #20bc8d;"></i></c:if>
+								<c:if test="${empty vo.fName}"><i class="fa-regular fa-comment-dots" style="color: #808080;"></i></c:if>
+							</c:if>
 							<a href = "boardContent.bo?idx=${vo.idx}">
 								${vo.title}
 								<c:if test="${vo.replyCnt != 0}"><span style = "color : red; font-size : 14px;">[${vo.replyCnt}]</span></c:if>

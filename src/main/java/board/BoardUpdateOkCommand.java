@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class BoardWriteOkCommand implements BoardInterface {
+public class BoardUpdateOkCommand implements BoardInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,31 +24,32 @@ public class BoardWriteOkCommand implements BoardInterface {
 		String fSName = multipartRequest.getFilesystemName("file");
 		String title = multipartRequest.getParameter("title") == null ? "" : multipartRequest.getParameter("title");
 		String content = multipartRequest.getParameter("content") == null ? "" : multipartRequest.getParameter("content");
+		int idx = multipartRequest.getParameter("idx") == null ? 0 : Integer.parseInt(multipartRequest.getParameter("idx"));
+		int flag = multipartRequest.getParameter("flag") == null ? 0 : Integer.parseInt(multipartRequest.getParameter("flag"));
 		title = title.replace("<", "&lt;");
 		title = title.replace(">", "&gt;");
 		content = content.replace("<", "&lt;");
 		content = content.replace(">", "&gt;");
 		
-		HttpSession session = request.getSession();
-		int memberIdx = (int)session.getAttribute("sIdx");
-		String nickName = (String)session.getAttribute("sNickName");
-		
-		BoardVO vo = new BoardVO();
-		vo.setNickName(nickName);
-		vo.setMemberIdx(memberIdx);
+		BoardDAO dao = new BoardDAO();
+		BoardVO vo = dao.getBoardContent(idx);
 		vo.setTitle(title);
 		vo.setContent(content);
-		if(fName != null) {
+		// 기존 파일이 넘어오지 않았을때
+		if(flag!=1) {
 			vo.setfName(fName);
 			vo.setfSName(fSName);
 		}
-		BoardDAO dao = new BoardDAO();
-		int res = 0;
-		res = dao.setBoard(vo);
+		// 닉네임은 변경가능하므로 게시물을 수정한다면 게시물에 저장된 기존 닉네임이 아니라 현재 사용중인 닉네임이 저장된다.
+		HttpSession session = request.getSession();
+		String nickName = (String)session.getAttribute("sNickName");
+		vo.setNickName(nickName);
 		
-		if(res == 1) request.setAttribute("msg", "게시물이 등록되었습니다.");
-		else request.setAttribute("msg", "게시물 등록에 실패하였습니다.");
+		int res = dao.setBoardUpdate(vo);
 		
-		request.setAttribute("url", "boardList.bo");
+		if(res == 1) request.setAttribute("msg", "게시물이 수정되었습니다.");
+		else request.setAttribute("msg", "게시물 수정에 실패하였습니다.");
+		
+		request.setAttribute("url", "boardContent.bo?idx=" + idx);
 	}
 }

@@ -33,9 +33,9 @@
     		<a href = "javascript:infoShow()" class = "profile"><img src = "${ctp}/images/profile/${sProfile}" /></a>
 			<div class = "info">
 				<div><a href = "myInfo.mem">내정보</a></div>
-				<div style = "border : 1px solid #f1f1f1"></div>
+				<div style = "border-top : 1px solid #f1f1f1"></div>
 				<div><a href = "">설정</a></div>
-				<div style = "border : 1px solid #f1f1f1"></div>
+				<div style = "border-top : 1px solid #f1f1f1"></div>
 				<div><a href = "javascript:location.href='logoutOk.mem'">로그아웃</a></div>
 			</div>
     	</div>

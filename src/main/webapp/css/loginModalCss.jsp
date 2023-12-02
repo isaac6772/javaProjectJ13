@@ -7,6 +7,7 @@
     	height : 100%;
     	background-color: rgba(0, 0, 0, 0.5);
     	display : none;
+    	z-index: 99;
     }
     #loginModal .loginContent {
     	background-color : white;

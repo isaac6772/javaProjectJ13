@@ -27,9 +27,9 @@ public class BoardDAO {
 		if(rs != null) {
 			try {
 				rs.close();
-				pstmtClose();
 			} catch (Exception e) {}
 		}
+		pstmtClose();
 	}
 	
 /*-------------------------------------------------------------------------------------------------------------------------*/
@@ -62,7 +62,7 @@ public class BoardDAO {
 		
 		try {
 			sql = "select board1.*,member1.level,count(boardReply.idx) as replyCnt, datediff(now(),board1.writeDate) as dateDiff, timestampdiff(hour,board1.writeDate,now()) as hourDiff "
-					+ "from board1 join member1 on board1.memberIdx = member1.idx left join boardReply on board1.idx = boardReply.boardIdx group by board1.idx order by board1.idx desc "
+					+ "from board1 join member1 on board1.memberIdx = member1.idx left join boardReply on board1.idx = boardReply.boardIdx and boardReply.boardType = '자유게시판' group by board1.idx order by board1.idx desc "
 					+ "limit ?,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startIndexNo);
@@ -119,7 +119,7 @@ public class BoardDAO {
 		BoardVO vo = new BoardVO();
 		
 		try {
-			sql = "select board1.*,member1.level from board1 join member1 on board1.memberIdx = member1.idx and board1.idx = ?;";
+			sql = "select board1.*,member1.level from board1 join member1 on board1.memberIdx = member1.idx and board1.idx = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
 			rs = pstmt.executeQuery();
@@ -153,7 +153,7 @@ public class BoardDAO {
 		ArrayList<BoardReplyVO> vos = new ArrayList<BoardReplyVO>();
 		
 		try {
-			sql = "select boardReply.*,member1.profile,member1.level from boardReply join member1 on boardReply.memberIdx = member1.idx and boardReply.boardIdx = ?";
+			sql = "select boardReply.*,member1.profile,member1.level from boardReply join member1 on boardReply.memberIdx = member1.idx and boardReply.boardIdx = ? and boardReply.boardType = '자유게시판'";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
 			rs = pstmt.executeQuery();
@@ -181,12 +181,13 @@ public class BoardDAO {
 		}
 		return vos;
 	}
-
+	
+	// 게시물에 댓글 등록하기
 	public int setBoardReply(BoardReplyVO vo) {
 		int res = 0;
 		
 		try {
-			sql = "insert into boardReply values (default,?,?,?,?,default,default,default)";
+			sql = "insert into boardReply values (default,?,?,?,?,'자유게시판',default,default)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getNickName());
 			pstmt.setInt(2, vo.getMemberIdx());
@@ -202,4 +203,74 @@ public class BoardDAO {
 		return res;
 	}
 	
+	// 게시물 수정하기
+	public int setBoardUpdate(BoardVO vo) {
+		int res = 0;
+		
+		try {
+			sql = "update board1 set title = ?, content = ?, nickName = ?, fName = ?, fSName = ?, writeDate = default where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setString(3, vo.getNickName());
+			pstmt.setString(4, vo.getfName());
+			pstmt.setString(5, vo.getfSName());
+			pstmt.setInt(6, vo.getIdx());
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+	
+	// 게시물 삭제하기
+	public int setBoardDelete(int idx) {
+		int res = 0;
+		
+		try {
+			sql = "delete from board1 where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+	
+	// 게시물 조회수 증가
+	public void setViewNum(int boardIdx) {
+		try {
+			sql = "update board1 set viewNum = viewNum + 1 where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardIdx);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			pstmtClose();
+		}
+	}
+	
+	// 게시물 추천&비추천 처리
+	public void setBoardRecommend(int boardIdx, String goodBad, String num) {
+		try {
+			sql = "update board1 set "+goodBad+" = "+goodBad+" + "+num+" where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardIdx);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			pstmtClose();
+		}
+	}
 }

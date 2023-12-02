@@ -9,12 +9,23 @@
 		z-index: 1;
 	}
 	.container .boardContainer {
-		margin : 45px auto;
+		margin : 25px auto;
 		width : 82%;
 	}
 	.container .td {
 		display : inline-block;
 		width : 100%;
+	}
+	.container .td #imageViewBox {
+		border:1px solid rgb(220, 220, 220); 
+		border-radius: 7px; 
+		width : 200px; 
+		height : 160px;
+	}
+	.container .td #imageViewBox img {
+		width : 100%;
+		height : 100%;
+		border-radius: 7px;
 	}
 	.container .part {
 		margin-bottom : 15px;

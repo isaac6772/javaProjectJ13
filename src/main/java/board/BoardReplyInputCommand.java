@@ -14,6 +14,8 @@ public class BoardReplyInputCommand implements BoardInterface {
 		int memberIdx = request.getParameter("memberIdx") == null ? 0 : Integer.parseInt(request.getParameter("memberIdx"));
 		String content = request.getParameter("content") == null ? "" : request.getParameter("content");
 		String nickName = request.getParameter("nickName") == null ? "" : request.getParameter("nickName");
+		content = content.replace("<", "&lt;");
+		content = content.replace(">", "&gt;");
 		
 		BoardReplyVO vo = new BoardReplyVO();
 		vo.setBoardIdx(boardIdx);

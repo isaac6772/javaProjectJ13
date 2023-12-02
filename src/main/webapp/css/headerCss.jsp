@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Nanum+Gothic&display=swap');
 	body {
         margin: 0px;
         padding: 0px;
@@ -76,9 +77,9 @@
 	}
 	header .info {
 		display : none;
-		position : fixed;
-		top : 62px;
-		right : 55px;
+		position : absolute;
+		top : 37px;
+		right : -10px;
 		width : 125px;
 		border:1px solid rgb(155, 155, 155);
 		border-radius: 6px;
@@ -91,9 +92,10 @@
 		font-size: 0.8em;
 		text-align: center;
 		margin : 3px auto;
+		padding : 2px;
 	}
 	header .info div:hover {
-		background-color: #b6bbce;
+		background-color: rgb(245, 245, 245);
 	}
 	header .login1 a:hover {
 		color : darkgray;
