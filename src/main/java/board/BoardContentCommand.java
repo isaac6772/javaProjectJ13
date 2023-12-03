@@ -38,7 +38,7 @@ public class BoardContentCommand implements BoardInterface {
 		BoardVO vo = dao.getBoardContent(boardIdx);					// 게시물 가져오기
 		ArrayList<BoardReplyVO> vos = dao.getBoardReply(boardIdx);	// 댓글 가져오기
 		
-		request.setAttribute("vo", vo);
+		request.setAttribute("bVo", vo);
 		request.setAttribute("vos", vos);
 		request.setAttribute("goodBad", flag);
 	}

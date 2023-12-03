@@ -139,6 +139,9 @@
 .container .repl .replContentBox {
 	margin-left : 43px;
 }
+.container .repl .replContentBox .deleteRepl {
+	float : right;
+}
 .container .repl .replContentBox .replNick {
 	
 }
@@ -152,4 +155,4 @@
 	color : gray;
 	font-size: 0.8em;
 }
-  </style>
+</style>

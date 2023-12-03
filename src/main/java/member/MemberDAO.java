@@ -38,7 +38,7 @@ public class MemberDAO {
 		MemberVO vo = new MemberVO();
 		
 		try {
-			sql = "select * from member1 where mid = ?";
+			sql = "select member1.*,sum(good) as good, sum(bad) as bad from member1 join board1 on member1.idx = board1.memberIdx and member1.mid = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
@@ -57,6 +57,9 @@ public class MemberDAO {
 				vo.setLastDate(rs.getString("lastDate"));
 				vo.setProfile(rs.getString("profile"));
 				vo.setUserInfo(rs.getString("userInfo"));
+				
+				vo.setGood(rs.getInt("good"));
+				vo.setBad(rs.getInt("bad"));
 			}
 		} catch (SQLException e) {
 			System.out.println("SQL 구문 오류 : " + e.getMessage());

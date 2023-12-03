@@ -19,8 +19,8 @@ create table board1(
 
 drop table board1;
 desc board1;
-insert into board1 values(default,'김말숙',3,'말숙이왔따','간다~',null,null,default,default,default,'일반',default);
-insert into board1 values(default,'홍길동',2,'안녕','하세요~',null,null,default,default,default,'일반',default);
+insert into board1 values(default,'김말숙s',3,'도배하지마','혼난다',null,null,default,10,default,'일반',default);
+insert into board1 values(default,'홍길동',2,'도배해도되나요?','하세요~',null,null,default,default,default,'일반',default);
 insert into board1 values(default,'관리자',1,'안녕','하세요~',null,null,default,default,default,'일반',default);
 select * from board1;
 
@@ -42,5 +42,4 @@ drop table boardReply;
 insert into boardReply values(default,'관리자',1,15,'도배',default,default,default);
 select * from boardReply;
 
-select board1.*,member1.level,count(boardReply.idx) as replyCnt from board1 join member1 on board1.memberIdx = member1.idx left join boardReply on board1.idx = boardReply.boardIdx and boardReply.boardType = '자유게시판' group by board1.idx
-
+select board1.*,member1.level,count(boardReply.idx) as replyCnt from board1 join member1 on board1.memberIdx = member1.idx and board1.title like '%%' left join boardReply on board1.idx = boardReply.boardIdx and boardReply.boardType = '자유게시판' group by board1.idx order by board1.idx desc 

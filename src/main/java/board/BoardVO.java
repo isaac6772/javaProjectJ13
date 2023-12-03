@@ -16,6 +16,7 @@ public class BoardVO {
 	
 	private int replyCnt;
 	private int memberLevel;
+	private String memberProfile;
 	private String dateDiff;
 	private String hourDiff;
 	
@@ -103,6 +104,12 @@ public class BoardVO {
 	public void setMemberLevel(int memberLevel) {
 		this.memberLevel = memberLevel;
 	}
+	public String getMemberProfile() {
+		return memberProfile;
+	}
+	public void setMemberProfile(String memberProfile) {
+		this.memberProfile = memberProfile;
+	}
 	public String getDateDiff() {
 		return dateDiff;
 	}
@@ -120,7 +127,8 @@ public class BoardVO {
 		return "BoardVO [idx=" + idx + ", nickName=" + nickName + ", memberIdx=" + memberIdx + ", title=" + title
 				+ ", content=" + content + ", fName=" + fName + ", fSName=" + fSName + ", viewNum=" + viewNum
 				+ ", good=" + good + ", bad=" + bad + ", boardType=" + boardType + ", writeDate=" + writeDate
-				+ ", replyCnt=" + replyCnt + ", memberLevel=" + memberLevel + ", dateDiff=" + dateDiff + ", hourDiff="
-				+ hourDiff + "]";
+				+ ", replyCnt=" + replyCnt + ", memberLevel=" + memberLevel + ", memberProfile=" + memberProfile
+				+ ", dateDiff=" + dateDiff + ", hourDiff=" + hourDiff + "]";
 	}
+	
 }

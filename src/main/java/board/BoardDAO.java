@@ -35,11 +35,12 @@ public class BoardDAO {
 /*-------------------------------------------------------------------------------------------------------------------------*/
 	
 	// 게시물 등록
-	public int setBoard(BoardVO vo) {
+	public int setBoard(BoardVO vo, String inform) {
 		int res = 0;
 		
 		try {
-			sql = "insert into board1 values (default,?,?,?,?,?,?,default,default,default,default,default)";
+			sql = "insert into board1 values (default,?,?,?,?,?,?,default,default,default,'일반',default)";
+			if(inform != "") sql = "insert into board1 values (default,?,?,?,?,?,?,default,default,default,'공지',default)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getNickName());
 			pstmt.setInt(2, vo.getMemberIdx());
@@ -57,13 +58,21 @@ public class BoardDAO {
 	}
 	
 	// 게시판 리스트 불러오기
-	public ArrayList<BoardVO> getBoardList(int startIndexNo, int pageSize) {
+	public ArrayList<BoardVO> getBoardList(int startIndexNo, int pageSize, String parameter) {
 		ArrayList<BoardVO> vos = new ArrayList<BoardVO>();
 		
 		try {
+			
 			sql = "select board1.*,member1.level,count(boardReply.idx) as replyCnt, datediff(now(),board1.writeDate) as dateDiff, timestampdiff(hour,board1.writeDate,now()) as hourDiff "
-					+ "from board1 join member1 on board1.memberIdx = member1.idx left join boardReply on board1.idx = boardReply.boardIdx and boardReply.boardType = '자유게시판' group by board1.idx order by board1.idx desc "
+					+ "from board1 join member1 on board1.memberIdx = member1.idx and (board1.title like '%"+parameter+"%' or board1.nickName like '%"+parameter+"%') left join boardReply on board1.idx = boardReply.boardIdx and boardReply.boardType = '자유게시판' group by board1.idx order by board1.idx desc "
 					+ "limit ?,?";
+			if(parameter.equals("인기글")) sql = "select board1.*,member1.level,count(boardReply.idx) as replyCnt, datediff(now(),board1.writeDate) as dateDiff, timestampdiff(hour,board1.writeDate,now()) as hourDiff "
+					+ "from board1 join member1 on board1.memberIdx = member1.idx and board1.good >= 10 left join boardReply on board1.idx = boardReply.boardIdx and boardReply.boardType = '자유게시판' group by board1.idx order by board1.idx desc "
+					+ "limit ?,?";
+			else if(parameter.equals("공지")) sql = "select board1.*,member1.level,count(boardReply.idx) as replyCnt, datediff(now(),board1.writeDate) as dateDiff, timestampdiff(hour,board1.writeDate,now()) as hourDiff "
+					+ "from board1 join member1 on board1.memberIdx = member1.idx and boardType = '공지' left join boardReply on board1.idx = boardReply.boardIdx and boardReply.boardType = '자유게시판' group by board1.idx order by board1.idx desc "
+					+ "limit ?,?";
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startIndexNo);
 			pstmt.setInt(2, pageSize);
@@ -98,11 +107,12 @@ public class BoardDAO {
 	}
 	
 	// 레코드 수
-	public int getTotRecCnt() {
+	public int getTotRecCnt(String search) {
 		int res = 0;
 		
 		try {
 			sql = "select count(*) as cnt from board1";
+			if(sql != "") sql = "select count(*) as cnt from board1 where title like '%"+search+"%' or nickName like '%"+search+"%'";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) res = rs.getInt("cnt");
@@ -119,7 +129,7 @@ public class BoardDAO {
 		BoardVO vo = new BoardVO();
 		
 		try {
-			sql = "select board1.*,member1.level from board1 join member1 on board1.memberIdx = member1.idx and board1.idx = ?";
+			sql = "select board1.*,member1.level,member1.profile from board1 join member1 on board1.memberIdx = member1.idx and board1.idx = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
 			rs = pstmt.executeQuery();
@@ -137,6 +147,7 @@ public class BoardDAO {
 				vo.setBoardType(rs.getString("boardType"));
 				vo.setWriteDate(rs.getString("writeDate"));
 				
+				vo.setMemberProfile(rs.getString("profile"));
 				vo.setMemberLevel(rs.getInt("level"));
 			}
 		} catch (SQLException e) {
@@ -272,5 +283,56 @@ public class BoardDAO {
 		} finally {
 			pstmtClose();
 		}
+	}
+	
+	// 인기글 레코드 수
+	public int getGoodRecCnt() {
+		int res = 0;
+		
+		try {
+			sql = "select count(*) as cnt from board1 where good >= 10";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) res = rs.getInt("cnt");
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return res;
+	}
+	
+	// 공지사항 레코드수
+	public int getInformRecCnt() {
+		int res = 0;
+		
+		try {
+			sql = "select count(*) as cnt from board1 where boardType = '공지'";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) res = rs.getInt("cnt");
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return res;
+	}
+	
+	// 댓글 삭제하기
+	public int setDeleteReply(int idx) {
+		int res = 0;
+		
+		try {
+			sql = "delete from boardReply where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
 	}
 }

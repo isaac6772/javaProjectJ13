@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="/css/navCss.jsp"></jsp:include>
 <script>
 	$(function() {
@@ -16,9 +17,9 @@
         <i class="fa-regular fa-clipboard fa-xl" style="color: #547abb; margin-left: 19px;"></i><span style ="margin-left:-3px">자유게시판</span><i class="fa-solid fa-chevron-down fa-sm"></i>
     </div>
     <div class = "submenu">
-        <div><a href = "">인기글</a></div>
+        <div><a href = "boardGoodList.bo">인기글</a></div>
         <div><a href = "boardList.bo">전체글</a></div>
-        <div><a href = "">공지사항</a></div>
+        <div><a href = "boardInformList.bo">공지사항</a></div>
     </div>
     <div class = "mainmenu">
         <i class="fa-regular fa-heart fa-xl" style="color: #547abb;"></i>친구<i class="fa-solid fa-chevron-down fa-sm"></i>
@@ -41,5 +42,18 @@
         <div><a href = "">문의하기</a></div>
         <div><a href = "">등업신청</a></div>
     </div>
+    
     <div style = "border: 1px solid rgb(224, 219, 219); margin-top:20px"></div>
+    
+    <!-- 관리자 전용 메뉴 -->
+    <c:if test = "${sLevel==77}">
+	    <div class = "mainmenu">
+	        <i class="fa-solid fa-user-gear fa-xl" style="color: #547abb;"></i>관리자<i class="fa-solid fa-chevron-down fa-sm"></i>
+	    </div>
+	    <div class = "submenu">
+	        <div><a href = "informWrite.ad">공지글등록</a></div>
+	        <div><a href = "">회원관리</a></div>
+	    </div>
+	    <div style = "border: 1px solid rgb(224, 219, 219); margin-top:20px"></div>
+    </c:if>
 </nav>

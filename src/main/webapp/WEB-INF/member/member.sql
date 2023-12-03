@@ -23,4 +23,5 @@ desc member1;
 select * from member1;
 drop table member1;
 insert into member1 values (default,'admin','1234','관리자','관리자','01012345678','남자',0,0,100,default,default,default,'n');
+select *,sum(good) as good, sum(bad) as bad from member1 join board1 on member1.idx = board1.memberIdx and member1.mid = 'admin'
 

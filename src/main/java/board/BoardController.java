@@ -21,7 +21,7 @@ public class BoardController extends HttpServlet {
 		com = com.substring(com.lastIndexOf("/"),com.lastIndexOf("."));
 		
 		HttpSession session = request.getSession();
-		int level = session.getAttribute("sLevel") == null ? 88 : (int)session.getAttribute("sLevel");
+		int level = session.getAttribute("sLevel") == null ? 0 : (int)session.getAttribute("sLevel");
 		
 		// 자유게시판 이동하기
 		if(com.equals("/boardList")) {
@@ -29,6 +29,32 @@ public class BoardController extends HttpServlet {
 			command.execute(request, response);
 			viewPage += "/boardList.jsp";
 		}
+		// 인기글 이동하기
+		else if(com.equals("/boardGoodList")) {
+			command = new BoardGoodListCommand();
+			command.execute(request, response);
+			viewPage += "/boardGoodList.jsp";
+		}
+		// 개별 게시물 페이지
+		else if(com.equals("/boardContent")) {
+			command = new BoardContentCommand();
+			command.execute(request, response);
+			viewPage += "/boardContent.jsp";
+		}
+		// 공지사항 페이지
+		else if(com.equals("/boardInformList")) {
+			command = new BoardInformListCommand();
+			command.execute(request, response);
+			viewPage += "/boardInformList.jsp";
+		}
+		
+		// 비회원일 경우
+		else if(level < 1) {
+			request.setAttribute("msg", "회원만 이용가능한 서비스 입니다.");
+			request.setAttribute("url", "boardList.bo");
+			viewPage += "/include/message.jsp";
+		}
+/*-------------------------------------------------------------------------------------------------------------*/
 		// 게시물 작성 페이지 이동
 		else if(com.equals("/boardWrite")) {
 			viewPage += "/boardWrite.jsp";
@@ -38,12 +64,6 @@ public class BoardController extends HttpServlet {
 			command = new BoardWriteOkCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
-		}
-		// 개별 게시물 페이지
-		else if(com.equals("/boardContent")) {
-			command = new BoardContentCommand();
-			command.execute(request, response);
-			viewPage += "/boardContent.jsp";
 		}
 		// 게시물에 댓글 쓰기
 		else if(com.equals("/boardReplyInput")) {
@@ -69,9 +89,15 @@ public class BoardController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		// 게시물 추천&비추천 상태 가져오기
+		// 게시물 추천&비추천 처리
 		else if(com.equals("/recommendUpdate")) {
 			command = new RecommendUpdateCommand();
+			command.execute(request, response);
+			return;
+		}
+		// 댓글 삭제
+		else if(com.equals("/deleteReply")) {
+			command = new DeleteReplyCommand();
 			command.execute(request, response);
 			return;
 		}

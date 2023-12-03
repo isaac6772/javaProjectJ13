@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -86,9 +86,15 @@
 					</div>
 				</div>
 				<div class = "tr">
-					<div class = "th">작성글개수</div>
+					<div class = "th">추천수</div>
 					<div class = "td">
-						-
+						${vo.good}
+					</div>
+				</div>
+				<div class = "tr">
+					<div class = "th">비추천수</div>
+					<div class = "td">
+						${vo.bad}
 					</div>
 				</div>
 			</div>

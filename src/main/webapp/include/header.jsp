@@ -17,10 +17,18 @@
 			$('header .info').show();
 		}
 	}
+	
+	$(function() {
+		$('#search').keydown(function(e) {
+			if(e.keyCode == 13) {
+				location.href = "boardList.bo?search=" + $('#search').val();
+			}
+		});
+	});
 </script>
 <header>
 	<div class = "home"><a href = "main.mem"><i class="fa-regular fa-comment" style="color: #547abb;"></i> 오늘뭐할까?</a></div>
-    <div class = "search"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #547abb;"></i><input type = "text" placeholder = "검색어를 입력해주세요" /></div>
+    <div class = "search"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #547abb;"></i><input type = "text" id = "search" value = "${search}" placeholder = "검색어를 입력해주세요" /></div>
     <c:if test="${empty sMid}">
 	    <div class = "login1">
 		    <div style = "display : inline-block;"><a href = "javascript:loginModalShow()">로그인</a></div> |
@@ -33,9 +41,9 @@
     		<a href = "javascript:infoShow()" class = "profile"><img src = "${ctp}/images/profile/${sProfile}" /></a>
 			<div class = "info">
 				<div><a href = "myInfo.mem">내정보</a></div>
-				<div style = "border-top : 1px solid #f1f1f1"></div>
+				<div style = "border-top : 1px solid #f1f1f1; padding : 0px;"></div>
 				<div><a href = "">설정</a></div>
-				<div style = "border-top : 1px solid #f1f1f1"></div>
+				<div style = "border-top : 1px solid #f1f1f1; padding : 0px;"></div>
 				<div><a href = "javascript:location.href='logoutOk.mem'">로그아웃</a></div>
 			</div>
     	</div>

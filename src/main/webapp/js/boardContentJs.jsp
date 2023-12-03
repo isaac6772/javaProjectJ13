@@ -4,6 +4,11 @@
 
 function replInput() {
 	let reply = $('#replContent').val().trim();
+	
+	if('${sIdx}'=='') {
+		alert("로그인 후 이용가능합니다");
+		return false;
+	}
 	if(reply=="") {
 		alert("내용을 입력해주세요");
 		return false;
@@ -14,7 +19,7 @@ function replInput() {
 		type : "post",
 		data : {
 			content : reply,
-   			boardIdx : ${vo.idx},
+   			boardIdx : ${bVo.idx},
 			nickName : '${sNickName}',
 			memberIdx : '${sIdx}',
 		},
@@ -29,7 +34,7 @@ function replInput() {
 }
 
 $(function() {
-	let flag = ${goodBad};
+	let flag = '${goodBad}';
 	if(flag==1) {
 		$('#good').hide();
 		$('#goodChecked').show();
@@ -45,12 +50,12 @@ $(function() {
 	});
 	$('#boardUpdate').click(function() {
 		//location.href = "boardUpdate.bo?idx=" + $('#boardIdx').val();
-		location.href = "boardUpdate.bo?idx=${vo.idx}";
+		location.href = "boardUpdate.bo?idx=${bVo.idx}";
 	});
 	$('#boardDelete').click(function() {
 		let ans = confirm('정말 삭제하시겠습니까?');
 		if(!ans) return false;
-		location.href = 'boardDelete.bo?idx=${vo.idx}';
+		location.href = 'boardDelete.bo?idx=${bVo.idx}';
 	});
 	// 추천,비추천 처리
 	$('#good').click(function() {
@@ -68,17 +73,42 @@ $(function() {
 });
 
 function recommend(flag) {
+	if('${sIdx}'=='') {
+		alert("로그인 후 이용가능합니다");
+		return false;
+	}
+	if('${bVo.memberIdx}'=='${sIdx}') {
+		alert("자신의 글은 추천할 수 없습니다.");
+		return false;
+	}
 	$.ajax({
 		url : "recommendUpdate.bo",
 		type : "post",
 		data : {
-			memberIdx : ${sIdx},
-			boardIdx : ${vo.idx},
+			memberIdx : '${sIdx}',
+			boardIdx : '${bVo.idx}',
 			flag : flag
 		},
 		success : function() {
 			location.reload();
 		},	
+		error : function() {
+			alert("전송오류");
+		}
+	});
+}
+
+function deleteRepl(idx) {
+	let ans = confirm("댓글을 삭제합니다");
+	if(!ans) return false;
+	$.ajax({
+		url : "deleteReply.bo",
+		type : "post",
+		data : {idx : idx},
+		success : function(res) {
+			if(res==1) location.reload();
+			else alert("삭제실패");
+		},
 		error : function() {
 			alert("전송오류");
 		}

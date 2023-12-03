@@ -1,4 +1,4 @@
-package board;
+package admin;
 
 import java.io.IOException;
 
@@ -10,7 +10,10 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class BoardWriteOkCommand implements BoardInterface {
+import board.BoardDAO;
+import board.BoardVO;
+
+public class InformWriteOkCommand implements AdminInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,10 +47,10 @@ public class BoardWriteOkCommand implements BoardInterface {
 		}
 		BoardDAO dao = new BoardDAO();
 		int res = 0;
-		res = dao.setBoard(vo,"");
+		res = dao.setBoard(vo,"공지");
 		
-		if(res == 1) request.setAttribute("msg", "게시물이 등록되었습니다.");
-		else request.setAttribute("msg", "게시물 등록에 실패하였습니다.");
+		if(res == 1) request.setAttribute("msg", "공지사항이 등록되었습니다.");
+		else request.setAttribute("msg", "공지사항 등록에 실패하였습니다.");
 		
 		request.setAttribute("url", "boardList.bo");
 	}
