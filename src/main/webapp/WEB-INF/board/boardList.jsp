@@ -17,6 +17,14 @@
 			let Size = e.value;
 			location.href = "boardList.bo?search=${search}&page=1&pageSize=" + Size;
 		}
+		
+		function showMemberInfo(e) {
+			if($(e).next().is(':hidden')) {
+				$('.memberInfo').hide();	// 여러 정보 상자가 열리지 않도록, 클릭한 회원의 정보만 띄우고 나머지는 사라짐
+				$(e).next().show();
+			}
+			else $(e).next().hide();
+		}
 	</script>
 </head>
 <body>
@@ -58,7 +66,14 @@
 								</a>
 							</div>
 							<div class = "td td3">
-								${vo.nickName}
+								<c:if test="${sIdx!=vo.memberIdx}">
+									<span onclick = "showMemberInfo(this)" style = "cursor:pointer;">${vo.nickName}</span>
+									<div class = "memberInfo">
+										<div><a href = "memberInfo.mem?idx=${vo.memberIdx}">회원정보</a></div>
+										<div><a>친구신청</a></div>
+									</div>
+								</c:if>
+								<c:if test="${sIdx==vo.memberIdx}">${vo.nickName}</c:if>
 								<i class="fa-solid fa-crown fa-sm" style="color: #caa316;"></i>
 							</div>
 							<div class = "td td4">
@@ -90,7 +105,14 @@
 						</div>
 						<!-- 관리자이면 왕관을 씌운다 -->
 						<div class = "td td3">
-							${vo.nickName}
+							<c:if test="${sIdx!=vo.memberIdx}">
+								<span onclick = "showMemberInfo(this)" style = "cursor:pointer;">${vo.nickName}</span>
+								<div class = "memberInfo">
+									<div><a href = "memberInfo.mem?idx=${vo.memberIdx}">회원정보</a></div>
+									<div><a>친구신청</a></div>
+								</div>
+							</c:if>
+							<c:if test="${sIdx==vo.memberIdx}">${vo.nickName}</c:if>
 							<c:if test="${vo.memberLevel ==  77}"><i class="fa-solid fa-crown fa-sm" style="color: #caa316;"></i></c:if>
 							<c:if test="${vo.memberLevel ==  2}"><i class="fa-solid fa-shield-cat" style="color: #3d6cbd;"></i></c:if>
 						</div>

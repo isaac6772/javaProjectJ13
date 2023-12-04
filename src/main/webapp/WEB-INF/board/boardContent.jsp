@@ -12,15 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> <!-- jquery -->
     <jsp:include page="/css/boardContentCss.jsp"></jsp:include>
     <jsp:include page="/js/boardContentJs.jsp"></jsp:include>
-    <script>
-    	'use strict';
-    	
-    	$(function() {
-    		$('#replContent').keyup(function(){
-    			$('#cnt').html($('#replContent').val().length);
-    		});
-    	});
-    </script>
 </head>
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
@@ -32,9 +23,16 @@
 			<div class = "title">${bVo.title}</div>
 			<div class = "info">
 				<img src = "${ctp}/images/profile/${bVo.memberProfile}" />
-				<div>
-					<span>
-						${bVo.nickName}</span>&nbsp;<span style = "font-weight: normal; font-size : 13px;font-family: Nanum Gothic;">
+				<div style = "position : relative;">
+					<c:if test="${sIdx!=bVo.memberIdx}">
+						<span onclick = "showMemberInfo(this)" style = "cursor:pointer;">${bVo.nickName}</span>
+						<div class = "memberInfo">
+							<div><a href = "memberInfo.mem?idx=${bVo.memberIdx}">회원정보</a></div>
+							<div><a>친구신청</a></div>
+						</div>
+					</c:if>
+					<c:if test="${sIdx==bVo.memberIdx}">${bVo.nickName}</c:if>
+					<span style = "font-weight: normal; font-size : 13px;font-family: Nanum Gothic;">
 						<c:if test="${bVo.memberLevel==1}">준회원</c:if>
 						<c:if test="${bVo.memberLevel==2}">정회원</c:if>
 						<c:if test="${bVo.memberLevel==77}">관리자</c:if>
@@ -75,7 +73,14 @@
 					<img src = "${ctp}/images/profile/${vo.memberProfile}" class = "profile" />
 					<div class = "replContentBox">
 						<div class = "replNick">
-							${vo.nickName}
+							<c:if test="${sIdx!=vo.memberIdx}">
+								<span onclick = "showMemberInfo(this)" style = "cursor:pointer;">${vo.nickName}</span>
+								<div class = "memberInfo">
+									<div><a href = "memberInfo.mem?idx=${vo.memberIdx}">회원정보</a></div>
+									<div><a>친구신청</a></div>
+								</div>
+							</c:if>
+							<c:if test="${sIdx==vo.memberIdx}">${vo.nickName}</c:if>
 							<c:if test="${vo.memberLevel ==  77}"><i class="fa-solid fa-crown fa-sm" style="color: #caa316;"></i></c:if>
 							<c:if test="${vo.memberLevel ==  2}"><i class="fa-solid fa-shield-cat" style="color: #3d6cbd;"></i></c:if>
 							<c:if test="${vo.memberIdx == sIdx || sIdx == bVo.memberIdx}">

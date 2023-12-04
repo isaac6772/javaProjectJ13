@@ -68,6 +68,32 @@
 	height : 50px;
 	line-height: 19px;
 }
+.container .memberInfo {
+	position : absolute;
+	top : 23px;
+	left : -3px;
+	display : inline-block;
+	width : 80px;
+	border: 1px solid rgba(0,0,0,0.06);
+	box-shadow: 0 1px 12px 0 rgba(0,0,0,.06);
+	text-align : center;
+	border-radius : 4px;
+	background-color: white;
+	display : none;
+	cursor : pointer;
+	z-index: 1;
+	font-size: 14.4px;
+}
+.container .memberInfo div {
+	padding : 8px;
+}
+.container .memberInfo div:hover {
+	background-color: rgb(245, 245, 245);
+}
+.container .memberInfo a {
+	text-decoration: none;
+	color : black;
+}
 .container .info .contentMenu {
 	float : right;
 	height: 20px;
@@ -143,7 +169,7 @@
 	float : right;
 }
 .container .repl .replContentBox .replNick {
-	
+	position : relative;
 }
 .container .repl .replContentBox .replContent {
 	font-family: 'Nanum Gothic';

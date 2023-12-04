@@ -159,4 +159,55 @@ public class MemberDAO {
 		return res;
 	}
 	
+	// 회원 조회 (idx)
+	public MemberVO getMemberIdxCheck(int idx) {
+		MemberVO vo = new MemberVO();
+		
+		try {
+			sql = "select member1.*,sum(good) as good, sum(bad) as bad from member1 join board1 on member1.idx = board1.memberIdx and member1.idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setNickName(rs.getString("nickName"));
+				vo.setName(rs.getString("name"));
+				vo.setPhone(rs.getString("phone"));
+				vo.setGender(rs.getString("gender"));
+				vo.setLevel(rs.getInt("level"));
+				vo.setVisitCnt(rs.getInt("visitCnt"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setJoinDate(rs.getString("joinDate"));
+				vo.setLastDate(rs.getString("lastDate"));
+				vo.setProfile(rs.getString("profile"));
+				vo.setUserInfo(rs.getString("userInfo"));
+				
+				vo.setGood(rs.getInt("good"));
+				vo.setBad(rs.getInt("bad"));
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vo;
+	}
+	
+	// 회원 정보공개 변경
+	public void setMemberUserInfo(int idx, String userInfo) {
+		try {
+			sql = "update member1 set userInfo = ? where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userInfo);
+			pstmt.setInt(2, idx);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+	}
+	
 }

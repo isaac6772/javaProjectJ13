@@ -34,6 +34,7 @@
 	.container .table {
 		border-top : 2px solid rgb(117, 127, 214);
 		border-bottom: 1px solid rgb(149, 156, 218);
+		user-select : none;		/* 드래그방지 */
 	}
 	.container .th {
 		font-weight: bolder;
@@ -46,7 +47,6 @@
 	.container .tr {
 		border-bottom:1px solid #e0e0e0;
 		height : 35px;
-		overflow: hidden;
 	}
 	.container .tr:hover {
 		background-color: rgb(249, 250, 255);
@@ -67,8 +67,9 @@
 		text-align: left;
 	}
 	.container .td3 {
-		width : 10%;
+		width : 120px;
 		font-size: 0.9em;
+		position : relative;
 	}
 	.container .td4 {
 		width : 11%;
@@ -81,6 +82,23 @@
 	.container .td6 {
 		width : 6%;
 		font-size: 0.9em;
+	}
+	.container .memberInfo {
+		position : absolute;
+		top : 33px;
+		left : 21px;
+		display : inline-block;
+		width : 80px;
+		border: 1px solid rgba(0,0,0,0.06);
+		box-shadow: 0 1px 12px 0 rgba(0,0,0,.06);
+		border-radius : 4px;
+		background-color: white;
+		display : none;
+		cursor : pointer;
+		z-index: 1;
+	}
+	.container .memberInfo div:hover {
+		background-color: rgb(245, 245, 245);
 	}
 	.container .writeBtn {
 		padding : 5px 15px;

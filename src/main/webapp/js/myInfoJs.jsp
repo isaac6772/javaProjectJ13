@@ -308,4 +308,18 @@
 		else alert("회원탈퇴에 동의를 해주세요");
 	}
 	
+	function changeUserInfo(e) {
+		let userInfo = 'y';
+		if(e.checked) userInfo = 'y';
+		else userInfo = 'n';
+		
+		$.ajax({
+			url : "userInfoChange.mem",
+			type : "post",
+			data : {userInfo : userInfo},
+			error : function() {
+				alert("전송오류");
+			}
+		});
+	}
 </script>

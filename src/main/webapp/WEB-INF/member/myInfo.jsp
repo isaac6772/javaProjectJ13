@@ -45,7 +45,7 @@
 		<div class = "info">
 			<div class = "title">
 				<div style = "display : inline-block; width : 45%">개인정보</div>
-				<div style = "display : inline-block; width : 52%; text-align: right; font-size : 0.8em">정보공개<input type = "checkbox" ${vo.userInfo == 'y' ? 'checked' : ''} /></div>
+				<div style = "display : inline-block; width : 52%; text-align: right; font-size : 0.8em">정보공개<input type = "checkbox" onchange = "changeUserInfo(this)" ${vo.userInfo == 'y' ? 'checked' : ''} /></div>
 			</div>
 			<div class = "content">
 				<div class = "tr">

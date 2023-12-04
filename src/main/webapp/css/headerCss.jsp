@@ -82,7 +82,8 @@
 		top : 37px;
 		right : -10px;
 		width : 125px;
-		border:1px solid rgb(155, 155, 155);
+		border: 1px solid rgba(0,0,0,0.06);
+		box-shadow: 0 1px 12px 0 rgba(0,0,0,.06);
 		border-radius: 6px;
 		background-color: white;
 	}

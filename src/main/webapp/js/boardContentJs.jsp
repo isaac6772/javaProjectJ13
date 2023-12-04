@@ -70,6 +70,9 @@ $(function() {
 	$('#badChecked').click(function() {
 		recommend(0);
 	});
+	$('#replContent').keyup(function(){
+		$('#cnt').html($('#replContent').val().length);
+	});
 });
 
 function recommend(flag) {
@@ -113,5 +116,13 @@ function deleteRepl(idx) {
 			alert("전송오류");
 		}
 	});
+}
+
+function showMemberInfo(e) {
+	if($(e).next().is(':hidden')) {
+		$('.memberInfo').hide();	
+		$(e).next().show();
+	}
+	else $(e).next().hide();
 }
 </script>
