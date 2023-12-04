@@ -38,11 +38,13 @@
 					$('#alertModal').show();
 					$('#alertMsg').html('업로드 가능한 파일은 jpg, png 입니다.');
 					$('#file').val("");		// 조건에 맞지 않으면 업로드 시키지 않음
+					document.getElementById('img').src = "${ctp}/images/board/noFileImage.png";
 				}
 				else if(file.size > 1024 * 1024 * 10) {
 					$('#alertModal').show();
 					$('#alertMsg').html('10Mbyte 이하의 파일만 업로드 가능합니다.');
 					$('#file').val("");
+					document.getElementById('img').src = "${ctp}/images/board/noFileImage.png";
 				}
 				else if(file.files && file.files[0]){
 					let reader = new FileReader();

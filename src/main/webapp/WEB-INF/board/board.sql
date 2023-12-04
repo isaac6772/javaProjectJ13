@@ -42,4 +42,5 @@ drop table boardReply;
 insert into boardReply values(default,'관리자',1,15,'도배',default,default,default);
 select * from boardReply;
 
+select boardReply.*,member1.profile,member1.level from boardReply join member1 on boardReply.memberIdx = member1.idx and boardReply.boardIdx = 233 and boardReply.boardType = '자유게시판'
 select board1.*,member1.level,count(boardReply.idx) as replyCnt from board1 join member1 on board1.memberIdx = member1.idx and board1.title like '%%' left join boardReply on board1.idx = boardReply.boardIdx and boardReply.boardType = '자유게시판' group by board1.idx order by board1.idx desc 

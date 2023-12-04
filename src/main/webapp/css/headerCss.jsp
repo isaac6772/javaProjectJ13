@@ -11,10 +11,11 @@
 	    padding: 20px;
 	    position: fixed;
 	    width : 100vw;
-	    height: 5vh;
+	    height: 9vh;
 	    border-bottom: 1px solid rgb(224, 219, 219);
 	    background-color : white;
 	    z-index: 50;
+	    box-sizing: border-box;
 	}
 	header .home, header .search, header .login1, header .login2{
 	    display : inline-block;

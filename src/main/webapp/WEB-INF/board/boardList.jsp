@@ -15,7 +15,7 @@
 		
 		function pageSizeChange(e) {
 			let Size = e.value;
-			location.href = "boardList.bo?page=1&pageSize=" + Size;
+			location.href = "boardList.bo?search=${search}&page=1&pageSize=" + Size;
 		}
 	</script>
 </head>
@@ -107,23 +107,23 @@
 			<div style = "text-align: right"><input type = "button" class = "writeBtn" onclick = "location.href='boardWrite.bo'" value = "글쓰기" /></div>
 			<div class = "pageBox">
 				<div class = "pageStart page">
-					<c:if test="${curBlock>0}"><a href = "boardList.bo?page=1&search=${search}">&lt;&lt;</a></c:if>
+					<c:if test="${curBlock>0}"><a href = "boardList.bo?page=1&pageSize=${pageSize}&search=${search}">&lt;&lt;</a></c:if>
 					<c:if test="${curBlock==0}"><span style = "color:gray">&lt;&lt;</span></c:if>
 				</div>
 				<div class = "pagePre page">
-					<c:if test="${page>1}"><a href = "boardList.bo?page=${page-1}&search=${search}">&lt;</a></c:if>
+					<c:if test="${page>1}"><a href = "boardList.bo?page=${page-1}&pageSize=${pageSize}&search=${search}">&lt;</a></c:if>
 					<c:if test="${page==1}"><span style = "color:gray">&lt;</span></c:if>
 				</div>
 				<c:forEach var = "i" begin = "${curBlock*blockSize+1}" end = "${curBlock*blockSize+blockSize}" varStatus = "st">
-					<c:if test="${page==i && i<=totPage}"><div class = "page${st.count} page selected"><a href = "boardList.bo?page=${i}&search=${search}">${i}</a></div></c:if>
-					<c:if test="${page!=i && i<=totPage}"><div class = "page${st.count} page"><a href = "boardList.bo?page=${i}&search=${search}">${i}</a></div></c:if>
+					<c:if test="${page==i && i<=totPage}"><div class = "page${st.count} page selected"><a href = "boardList.bo?page=${i}&pageSize=${pageSize}&search=${search}">${i}</a></div></c:if>
+					<c:if test="${page!=i && i<=totPage}"><div class = "page${st.count} page"><a href = "boardList.bo?page=${i}&pageSize=${pageSize}&search=${search}">${i}</a></div></c:if>
 				</c:forEach>
 				<div class = "pageAfter page">
-					<c:if test="${page<totPage}"><a href = "boardList.bo?page=${page+1}&search=${search}">&gt;</a></c:if>
+					<c:if test="${page<totPage}"><a href = "boardList.bo?page=${page+1}&pageSize=${pageSize}&search=${search}">&gt;</a></c:if>
 					<c:if test="${page==totPage}"><span style = "color:gray">&gt;</span></c:if>
 				</div>
 				<div class = "pageEnd page">
-					<c:if test="${curBlock<lastBlock}"><a href = "boardList.bo?page=${totPage}&search=${search}">&gt;&gt;</a></c:if>
+					<c:if test="${curBlock<lastBlock}"><a href = "boardList.bo?page=${totPage}&pageSize=${pageSize}&search=${search}">&gt;&gt;</a></c:if>
 					<c:if test="${curBlock==lastBlock}"><span style = "color:gray">&gt;&gt;</span></c:if>
 				</div>
 			</div>
